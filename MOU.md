@@ -1,4 +1,4 @@
-d## MEMORANDUM OF UNDERSTANDING (MOU)
+## MEMORANDUM OF UNDERSTANDING (MOU)
 
 **This Memorandum of Understanding (“MOU”) is entered into on [Date], by and between:**
 
