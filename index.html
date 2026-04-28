@@ -1,0 +1,1516 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Philanthropy OS — Gates Foundation RFP (AI)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;450;500;600;700;800&family=Outfit:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="deck-stage.js"></script>
+<template id="__bundler_thumbnail" data-bg-color="#ffffff">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#ffffff"/>
+    <!-- emerald accent bar -->
+    <rect x="0" y="0" width="8" height="800" fill="#059669"/>
+    <!-- logo mark -->
+    <rect x="80" y="60" width="56" height="56" rx="14" fill="#059669"/>
+    <text x="108" y="100" font-family="Arial" font-size="32" font-weight="700" fill="#ffffff" text-anchor="middle">♥</text>
+    <!-- wordmark -->
+    <text x="152" y="103" font-family="Arial" font-size="36" font-weight="800" fill="#0f172a">Philanthropy OS</text>
+    <!-- rule -->
+    <rect x="80" y="136" width="1040" height="2" fill="#e2e8f0"/>
+    <!-- slide silhouettes -->
+    <rect x="80" y="168" width="480" height="270" rx="10" fill="#f1f5f9"/>
+    <rect x="100" y="188" width="180" height="18" rx="4" fill="#059669" opacity="0.5"/>
+    <rect x="100" y="216" width="420" height="12" rx="3" fill="#cbd5e1"/>
+    <rect x="100" y="236" width="380" height="12" rx="3" fill="#cbd5e1"/>
+    <rect x="100" y="256" width="400" height="12" rx="3" fill="#cbd5e1"/>
+    <rect x="100" y="290" width="120" height="80" rx="8" fill="#e2e8f0"/>
+    <rect x="236" y="290" width="120" height="80" rx="8" fill="#e2e8f0"/>
+    <rect x="372" y="290" width="120" height="80" rx="8" fill="#e2e8f0"/>
+    <rect x="620" y="168" width="500" height="270" rx="10" fill="#f0fdf4"/>
+    <rect x="640" y="188" width="160" height="18" rx="4" fill="#059669" opacity="0.6"/>
+    <rect x="640" y="220" width="460" height="200" rx="8" fill="#dcfce7"/>
+    <!-- bottom row -->
+    <rect x="80" y="460" width="310" height="160" rx="10" fill="#f8fafc"/>
+    <rect x="406" y="460" width="310" height="160" rx="10" fill="#f8fafc"/>
+    <rect x="732" y="460" width="310" height="160" rx="10" fill="#f8fafc"/>
+    <rect x="1058" y="460" width="162" height="160" rx="10" fill="#f8fafc"/>
+    <!-- Gates label -->
+    <text x="80" y="700" font-family="Arial" font-size="18" fill="#94a3b8" letter-spacing="3">BILL &amp; MELINDA GATES FOUNDATION · RFP RESPONSE · 2026</text>
+  </svg>
+</template>
+<style>
+  :root {
+    /* tokens — light, matches philanthropy-os.onrender.com */
+    --bg:         #ffffff;
+    --bg-2:       #f8fafc;   /* slate-50 */
+    --bg-3:       #f1f5f9;   /* slate-100 */
+    --panel:      #ffffff;
+    --panel-2:    #f8fafc;
+    --rule:       rgba(15,23,42,0.10);     /* slate-900 @ 10 */
+    --rule-soft:  rgba(15,23,42,0.06);
+    --ink:        #0f172a;   /* slate-900 */
+    --ink-2:      #334155;   /* slate-700 */
+    --muted:      #64748b;   /* slate-500 */
+    --muted-2:    #94a3b8;   /* slate-400 */
+    --accent:     #059669;   /* emerald-600 — primary brand */
+    --accent-soft:#10b981;   /* emerald-500 */
+    --accent-2:   #f59e0b;   /* amber for crisis */
+    --danger:     #e11d48;   /* rose-600 */
+    --indigo:     #6366f1;
+    --success:    #10b981;
+    --sans:    "Inter", -apple-system, system-ui, sans-serif;
+    --display: "Outfit", "Inter", -apple-system, system-ui, sans-serif;
+    --mono:    "JetBrains Mono", ui-monospace, Menlo, monospace;
+
+    --shadow-linear: 0 1px 1px rgba(0,0,0,0.02), 0 2px 2px rgba(0,0,0,0.02), 0 4px 4px rgba(0,0,0,0.02), 0 8px 8px rgba(0,0,0,0.02);
+    --shadow-card: 0 1px 2px rgba(15,23,42,0.04), 0 4px 12px rgba(15,23,42,0.04);
+    --shadow-lift: 0 30px 60px -20px rgba(15,23,42,0.12), 0 12px 24px -12px rgba(15,23,42,0.08);
+  }
+  html, body { margin:0; padding:0; background:#e2e8f0; color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+  * { box-sizing: border-box; }
+
+  /* ---- slide base — LIGHT ---- */
+  section.slide {
+    width: 1920px; height: 1080px;
+    background: var(--bg);
+    color: var(--ink);
+    position: relative;
+    overflow: hidden;
+    font-family: var(--sans);
+    background-image:
+      radial-gradient(circle at 0% 0%, rgba(5,150,105,0.04), transparent 40%),
+      radial-gradient(circle at 100% 100%, rgba(99,102,241,0.03), transparent 45%);
+  }
+  section.slide.flat { background-image: none; }
+  section.slide.tinted { background: var(--bg-2); }
+  section.slide .pad { padding: 96px 112px; height:100%; display:flex; flex-direction:column; }
+
+  /* fade-up animation on active slide */
+  @keyframes fadeUp { from { opacity:0; transform: translateY(14px); } to { opacity:1; transform: translateY(0); } }
+  section.slide > .pad > *, section.slide > .cover > * { animation: fadeUp 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+  section.slide > .pad > *:nth-child(2) { animation-delay: 0.08s; }
+  section.slide > .pad > *:nth-child(3) { animation-delay: 0.16s; }
+  section.slide > .pad > *:nth-child(4) { animation-delay: 0.24s; }
+  section.slide > .pad > *:nth-child(5) { animation-delay: 0.32s; }
+
+  /* chrome */
+  .chrome { position:absolute; top:0; left:0; right:0; padding: 40px 112px 0; display:flex; justify-content:space-between; align-items:baseline; font-family: var(--mono); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); z-index: 5; }
+  .chrome .mark { display:flex; gap:10px; align-items:center; font-family: var(--display); font-weight:800; letter-spacing: -0.01em; text-transform: none; font-size: 16px; color: var(--ink); }
+  .mark-dot { width:24px; height:24px; border-radius:6px; background: var(--accent); display:inline-flex; align-items:center; justify-content:center; color:#fff; font-family: var(--sans); font-weight:700; font-size:13px; box-shadow: 0 4px 10px rgba(5,150,105,0.25); }
+  .mark-dot::before { content:"\2665"; line-height: 1; transform: translateY(-1px); }
+
+  .footer { position:absolute; left:112px; right:112px; bottom:40px; display:flex; justify-content:space-between; font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted-2); z-index: 5; }
+
+  .eyebrow { font-family: var(--mono); font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin: 0 0 28px; font-weight: 600; }
+
+  /* — typography — */
+  h1.display { font-family: var(--display); font-weight: 900; font-size: 132px; line-height: 0.94; letter-spacing: -0.045em; margin: 0; color: var(--ink); }
+  h1.display em { font-style: normal; color: var(--accent); font-weight: 900; }
+  h2.title { font-family: var(--display); font-weight: 800; font-size: 80px; line-height: 1.02; letter-spacing: -0.035em; margin: 0 0 32px; text-wrap: balance; color: var(--ink); }
+  h2.title em { font-style: normal; color: var(--accent); }
+  h3.sub { font-family: var(--display); font-weight: 700; font-size: 44px; line-height: 1.1; letter-spacing: -0.025em; margin: 0 0 20px; color: var(--ink); }
+  p.lede { font-size: 24px; line-height: 1.5; color: var(--ink-2); max-width: 1200px; font-weight: 400; letter-spacing: -0.005em; }
+
+  .rule { height: 1px; background: var(--rule); width:100%; }
+
+  /* helpers */
+  .grid-2 { display:grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .grid-3 { display:grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .grid-4 { display:grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+
+  .num { font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; color: var(--accent); font-weight: 600; text-transform: uppercase; }
+
+  /* ── trust card — the workhorse, white with soft shadow ── */
+  .card {
+    background: #ffffff;
+    border: 1px solid rgba(15,23,42,0.08);
+    border-radius: 14px;
+    padding: 28px 28px;
+    box-shadow: var(--shadow-card);
+  }
+  .card.tight { padding: 20px 22px; border-radius: 10px; }
+  .card.dark { background: #0f172a; color: #f8fafc; border-color: rgba(255,255,255,0.08); }
+  .card.dark .num { color: var(--accent-soft); }
+
+  /* ── COVER ── */
+  .cover { display:flex; flex-direction:column; justify-content:space-between; height:100%; padding: 120px 112px; position: relative; }
+  .cover-glow {
+    position: absolute;
+    inset: -200px -200px auto auto;
+    width: 1100px; height: 1100px;
+    background: radial-gradient(circle, rgba(5,150,105,0.10), transparent 60%);
+    pointer-events: none;
+  }
+  .cover-grid { position:absolute; inset:0; pointer-events:none; opacity:0.5;
+    background-image:
+      linear-gradient(to right, rgba(15,23,42,0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(15,23,42,0.05) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+  .cover .top { display:flex; justify-content:space-between; align-items:flex-start; }
+  .cover .seal { color: var(--muted); font-family: var(--mono); font-size: 12px; letter-spacing: 0.18em; text-transform:uppercase; }
+
+  /* ── chips ── */
+  .chip { display:inline-flex; align-items:center; gap:8px; padding: 6px 12px; border-radius:999px; background: #ffffff; border: 1px solid var(--rule); color: var(--ink-2); font-size: 12px; font-weight: 600; font-family: var(--mono); letter-spacing: 0.08em; text-transform: uppercase; box-shadow: 0 1px 2px rgba(15,23,42,0.04); }
+  .chip.accent { background: rgba(5,150,105,0.08); border-color: rgba(5,150,105,0.30); color: var(--accent); }
+  .chip.amber { background: rgba(245,158,11,0.10); border-color: rgba(245,158,11,0.32); color: #b45309; }
+  .chip.danger { background: rgba(225,29,72,0.08); border-color: rgba(225,29,72,0.30); color: var(--danger); }
+
+  /* ── pillar ── */
+  .pillar { display:flex; flex-direction:column; gap: 12px; }
+  .pillar .k { font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+  .pillar .h { font-family: var(--display); font-weight: 700; font-size: 32px; line-height: 1.08; letter-spacing: -0.02em; color: var(--ink); }
+  .pillar .p { font-size: 16px; line-height: 1.55; color: var(--muted); }
+
+  /* ── stats ── */
+  .stat { display:flex; flex-direction:column; gap:12px; }
+  .stat .big { font-family: var(--display); font-weight: 900; font-size: 156px; line-height: 0.94; letter-spacing: -0.05em; color: var(--ink); font-feature-settings: "tnum" 1; }
+  .stat .big em { font-style: normal; color: var(--accent); }
+  .stat .lbl { font-size: 17px; line-height: 1.5; color: var(--muted); max-width: 380px; }
+
+  /* ── browser frame ── */
+  .browser { background: #ffffff; border-radius: 16px; overflow:hidden; border: 1px solid var(--rule); box-shadow: var(--shadow-lift); }
+  .browser .bar { display:flex; align-items:center; gap:10px; padding: 12px 16px; background: var(--bg-2); border-bottom:1px solid var(--rule); }
+  .browser .dots { display:flex; gap:6px; }
+  .browser .dots span { width:11px; height:11px; border-radius:50%; background:#cbd5e1; }
+  .browser .dots span:nth-child(1) { background:#ef4444; }
+  .browser .dots span:nth-child(2) { background:#f59e0b; }
+  .browser .dots span:nth-child(3) { background:#10b981; }
+  .browser .url { flex:1; background: #ffffff; border-radius: 6px; padding: 5px 12px; font-family: var(--mono); font-size: 12px; color: var(--muted); border:1px solid var(--rule-soft); display:flex; align-items:center; gap:8px; }
+  .browser .body { display:grid; grid-template-columns: 1.2fr 1fr; min-height: 640px; }
+
+  /* ── nonprofit page mock ── */
+  .np { padding: 36px 40px; background: #ffffff; color: var(--ink); display:flex; flex-direction:column; gap: 14px; border-right: 1px solid var(--rule); }
+  .np .logo { font-family: var(--display); font-weight: 800; font-size: 22px; letter-spacing: -0.02em; color: var(--ink); display:flex; align-items:center; gap:10px; }
+  .np .logo::before { content:""; width:22px; height:22px; border-radius:6px; background: var(--accent); }
+  .np .hero-img { height: 200px; border-radius: 10px; background: linear-gradient(135deg, rgba(5,150,105,0.12), rgba(99,102,241,0.08)); border: 1px dashed var(--rule); position: relative; display:flex; align-items:center; justify-content:center; font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; }
+  .np .hero-img::before { content: "Nonprofit hero image"; }
+  .np h4 { font-family: var(--display); font-weight: 700; font-size: 26px; margin: 0; letter-spacing: -0.02em; color: var(--ink); line-height: 1.2; }
+  .np p { color: var(--muted); font-size: 14px; line-height: 1.55; margin:0; }
+  .np .btn-row { display:flex; gap:10px; margin-top: 6px; }
+  .np .btn-lg { padding: 11px 18px; border-radius: 8px; background: var(--ink); color:#fff; font-weight:600; font-size:14px; box-shadow: 0 1px 2px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.1); }
+  .np .btn-lg.ghost { background:#ffffff; border:1px solid var(--rule); color: var(--ink); box-shadow: 0 1px 2px rgba(15,23,42,0.04); }
+
+  /* ── passport widget ── */
+  .passport {
+    background: linear-gradient(180deg, #f0fdf4 0%, #ffffff 100%);
+    color: var(--ink);
+    padding: 32px 32px;
+    display:flex; flex-direction:column; gap:18px;
+    position:relative;
+    border-left: 1px solid rgba(5,150,105,0.20);
+  }
+  .passport > * { position: relative; z-index: 1; }
+  .passport .head { display:flex; align-items:center; gap:10px; }
+  .passport .head .dot { width:8px; height:8px; border-radius:50%; background: var(--accent); box-shadow:0 0 0 4px rgba(5,150,105,0.20); }
+  .passport .head .n { font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+  .passport .hello { font-family: var(--display); font-weight: 700; font-size: 24px; line-height:1.25; letter-spacing: -0.02em; }
+  .passport .hello em { color: var(--accent); font-style: normal; }
+  .passport .score { background: #ffffff; border: 1px solid var(--rule); border-radius: 10px; padding: 16px; box-shadow: var(--shadow-card); }
+  .passport .score .row { display:flex; justify-content:space-between; align-items:center; font-size: 13px; color: var(--ink-2); margin-bottom: 6px; font-weight: 500; }
+  .passport .score .bar { height: 6px; background: #e2e8f0; border-radius:999px; overflow:hidden; margin-bottom: 12px; }
+  .passport .score .bar:last-child { margin-bottom: 0; }
+  .passport .score .bar > span { display:block; height:100%; background: linear-gradient(90deg, var(--accent), var(--accent-soft)); border-radius:999px; }
+  .passport .ins { display:flex; flex-direction:column; gap:10px; }
+  .passport .ins .line { display:flex; gap:12px; align-items:flex-start; font-size: 13px; line-height:1.5; color: var(--ink-2); }
+  .passport .ins .line strong { color: var(--ink); font-weight: 600; }
+  .passport .ins .line .ico { flex-shrink:0; width:26px; height:26px; border-radius:7px; background: rgba(5,150,105,0.12); color: var(--accent); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px; }
+  .passport .ins .line .ico.amber { background: rgba(245,158,11,0.15); color: #b45309; }
+  .passport .ins .line .ico.danger { background: rgba(225,29,72,0.12); color: var(--danger); }
+  .passport .cta { display:flex; gap:10px; margin-top: 4px; }
+  .passport .cta .b { flex:1; padding: 12px; border-radius: 8px; background: var(--accent); color: #fff; font-weight: 600; text-align:center; font-size: 14px; box-shadow: 0 4px 12px rgba(5,150,105,0.25); }
+  .passport .cta .b.ghost { background: #ffffff; border:1px solid var(--rule); color: var(--ink); font-weight:500; box-shadow: var(--shadow-card); }
+
+  /* ── donor hub ── */
+  .hub {
+    display:grid; grid-template-columns: 260px 1fr; gap: 0;
+    height: 720px;
+    background: #ffffff;
+    border-radius: 16px;
+    overflow:hidden;
+    border: 1px solid var(--rule);
+    box-shadow: var(--shadow-lift);
+  }
+  .hub .side {
+    background: var(--bg-2);
+    border-right: 1px solid var(--rule);
+    color: var(--ink);
+    padding: 24px 20px;
+    display:flex; flex-direction:column; gap: 22px;
+  }
+  .hub .side .me { display:flex; gap:11px; align-items:center; }
+  .hub .side .av { width:40px; height:40px; border-radius:50%; background: linear-gradient(135deg, var(--accent), #047857); }
+  .hub .side .me .who { font-weight: 600; font-size: 14px; color: var(--ink); }
+  .hub .side .me .psp { font-family: var(--mono); font-size: 10px; color: var(--muted); letter-spacing: 0.14em; margin-top: 2px; }
+  .hub .side nav { display:flex; flex-direction:column; gap: 1px; }
+  .hub .side nav a { padding: 9px 11px; border-radius: 8px; font-size: 13px; color: var(--muted); display:flex; align-items:center; gap:10px; font-weight: 500; }
+  .hub .side nav a.on { background: rgba(5,150,105,0.10); color: var(--accent); border: 1px solid rgba(5,150,105,0.22); font-weight: 600; }
+  .hub .side nav a .d { width:5px; height:5px; border-radius:50%; background: currentColor; opacity: 0.6; }
+  .hub .main { padding: 26px 30px; overflow:hidden; display:flex; flex-direction:column; gap:18px; background: #ffffff; }
+  .hub .main h5 { font-family: var(--display); font-weight: 700; font-size: 26px; margin:0; letter-spacing:-0.025em; color: var(--ink); }
+  .hub .main .sub { color: var(--muted); font-size: 13px; margin-top: 2px; }
+  .hub .filters { display:flex; gap:6px; flex-wrap: wrap; }
+  .hub .filter { padding: 5px 11px; border-radius: 999px; border: 1px solid var(--rule); font-size: 11px; color: var(--muted); font-weight:500; background: #ffffff; }
+  .hub .filter.on { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .hub .cards { display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .hub .org {
+    border:1px solid var(--rule);
+    border-radius: 10px;
+    padding: 16px;
+    display:flex; flex-direction:column; gap: 10px;
+    background: #ffffff;
+    box-shadow: 0 1px 2px rgba(15,23,42,0.03);
+  }
+  .hub .org .top { display:flex; justify-content:space-between; align-items:flex-start; gap:10px; }
+  .hub .org .thumb { width: 40px; height:40px; border-radius: 8px; background: var(--bg-3); flex-shrink:0; }
+  .hub .org .thumb.a { background: linear-gradient(135deg,#10b981,#047857); }
+  .hub .org .thumb.b { background: linear-gradient(135deg,#f59e0b,#b45309); }
+  .hub .org .thumb.c { background: linear-gradient(135deg,#6366f1,#3730a3); }
+  .hub .org .thumb.d { background: linear-gradient(135deg,#e11d48,#881337); }
+  .hub .org h6 { margin:0; font-family: var(--display); font-weight: 700; font-size: 16px; letter-spacing: -0.015em; color: var(--ink); }
+  .hub .org .meta { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .hub .org .match { font-family: var(--mono); font-size: 12px; color: var(--accent); background: rgba(5,150,105,0.08); border: 1px solid rgba(5,150,105,0.25); padding: 3px 8px; border-radius: 6px; font-weight: 700; }
+  .hub .org .bars { display:flex; gap: 5px; }
+  .hub .org .bars .b { flex:1; height:5px; border-radius:4px; background: #e2e8f0; position:relative; overflow:hidden; }
+  .hub .org .bars .b > span { position:absolute; inset:0; background: var(--accent); transform-origin:left; }
+  .hub .org .flags { display:flex; gap:5px; flex-wrap:wrap; }
+  .hub .org .flag { font-size: 10px; padding: 3px 7px; border-radius: 5px; background: var(--bg-3); color: var(--ink-2); font-weight: 600; font-family: var(--mono); letter-spacing: 0.05em; }
+  .hub .org .flag.crisis { background: rgba(245,158,11,0.15); color: #b45309; }
+  .hub .org .flag.match { background: rgba(5,150,105,0.10); color: var(--accent); }
+
+  /* ── flow ── */
+  .flow { display:grid; grid-template-columns: repeat(5, 1fr); gap: 18px; align-items:stretch; margin-top: 32px; }
+  .node {
+    background: #ffffff;
+    border:1px solid var(--rule);
+    border-radius: 12px;
+    padding: 22px 20px;
+    color: var(--ink);
+    display:flex; flex-direction:column; gap: 10px;
+    position:relative; min-height: 240px;
+    box-shadow: var(--shadow-card);
+  }
+  .node .k { font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; color: var(--accent); text-transform: uppercase; font-weight: 600; }
+  .node .h { font-family: var(--display); font-weight: 700; font-size: 20px; line-height: 1.18; letter-spacing: -0.02em; color: var(--ink); }
+  .node .p { font-size: 12px; line-height: 1.55; color: var(--muted); }
+  .node .ico { width: 36px; height: 36px; border-radius: 9px; background: rgba(5,150,105,0.10); border: 1px solid rgba(5,150,105,0.25); color: var(--accent); display:flex; align-items:center; justify-content:center; font-family: var(--mono); font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+  .node .arrow { position:absolute; right: -14px; top: 50%; transform: translateY(-50%); font-size: 18px; color: var(--accent); z-index:2; font-family: var(--mono); }
+  .node:last-child .arrow { display:none; }
+
+  .modes { display:grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 36px; }
+  .mode { background: #ffffff; border:1px solid var(--rule); border-radius: 12px; padding: 24px; color: var(--ink); box-shadow: var(--shadow-card); }
+  .mode .lvl { display:flex; align-items:center; gap:8px; font-family:var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform:uppercase; color: var(--muted); font-weight: 600; }
+  .mode .lvl .d { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); }
+  .mode.amber .lvl .d { background: var(--accent-2); }
+  .mode.amber .lvl { color: #b45309; }
+  .mode.danger .lvl .d { background: var(--danger); box-shadow: 0 0 10px var(--danger); }
+  .mode.danger .lvl { color: var(--danger); }
+  .mode h6 { font-family: var(--display); font-weight: 800; font-size: 30px; margin: 8px 0 10px; letter-spacing: -0.025em; color: var(--ink); }
+  .mode p { font-size: 14px; line-height: 1.55; color: var(--muted); margin: 0; }
+
+  /* ── trust index source ── */
+  .ti-source { background: #ffffff; border:1px solid var(--rule); border-radius: 10px; padding: 16px 18px; display:flex; flex-direction:column; gap: 6px; box-shadow: var(--shadow-card); }
+  .ti-source .wt { font-family: var(--mono); font-size: 12px; color: var(--accent); letter-spacing: 0.08em; font-weight: 700; }
+  .ti-source h6 { font-family: var(--display); font-weight: 700; font-size: 18px; margin: 0; color: var(--ink); letter-spacing: -0.015em; }
+  .ti-source p { font-size: 12px; color: var(--muted); line-height: 1.5; margin: 0; }
+
+  /* ── crisis pulse map ── */
+  .map-wrap {
+    position:relative;
+    background: linear-gradient(180deg, #0f172a, #020617);
+    border: 1px solid rgba(15,23,42,0.20);
+    border-radius: 14px;
+    overflow:hidden;
+    height: 620px;
+    box-shadow: var(--shadow-lift);
+  }
+  .map-wrap svg { display:block; width:100%; height:100%; }
+  .pin { position:absolute; }
+  .pin .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--accent-2); box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent-2) 25%, transparent); position:relative; }
+  .pin .dot::after { content:""; position:absolute; inset:-12px; border-radius:50%; border: 1px solid var(--accent-2); animation: pulse 2s infinite ease-out; }
+  .pin.sev .dot { background: var(--danger); box-shadow: 0 0 0 8px color-mix(in srgb, var(--danger) 28%, transparent); }
+  .pin.sev .dot::after { border-color: var(--danger); }
+  .pin.low .dot { background: var(--success); box-shadow: 0 0 0 5px color-mix(in srgb, var(--success) 25%, transparent); }
+  .pin.low .dot::after { border-color: var(--success); }
+  .pin .lbl { position:absolute; left: 20px; top: -3px; font-family: var(--mono); font-size: 11px; color: #f8fafc; letter-spacing: 0.05em; white-space: nowrap; background: rgba(15,23,42,0.85); padding: 3px 8px; border-radius: 5px; backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.10); font-weight: 500; }
+  @keyframes pulse { 0% { transform: scale(0.8); opacity: 0.9; } 100% { transform: scale(2.4); opacity: 0; } }
+
+  .crisis-card { position:absolute; right: 20px; top: 20px; width: 360px; background: rgba(255,255,255,0.96); border: 1px solid rgba(225,29,72,0.25); backdrop-filter: blur(16px); border-radius: 12px; padding: 20px; color: var(--ink); box-shadow: 0 30px 60px -10px rgba(0,0,0,0.4); }
+  .crisis-card .alert { display:flex; align-items:center; gap:8px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--danger); font-weight: 600; }
+  .crisis-card h6 { font-family: var(--display); font-weight: 800; font-size: 22px; margin: 8px 0 4px; letter-spacing: -0.02em; }
+  .crisis-card .meta { font-size: 12px; color: var(--muted); margin-bottom: 12px; }
+  .crisis-card .resp { font-size: 13px; line-height: 1.5; color: var(--ink-2); padding-top: 12px; border-top: 1px solid var(--rule); }
+  .crisis-card .resp strong { color: var(--danger); display:block; font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 8px; font-weight: 600; }
+
+  /* ── data table ── */
+  .src-table { display:grid; grid-template-columns: 1.1fr 1fr 0.9fr; gap: 0; font-size: 14px; background: #ffffff; border-radius: 12px; overflow:hidden; border: 1px solid var(--rule); box-shadow: var(--shadow-card); }
+  .src-table .h { padding: 13px 18px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); background: var(--bg-2); border-bottom: 1px solid var(--rule); font-weight: 600; }
+  .src-table .c { padding: 13px 18px; border-bottom: 1px solid var(--rule-soft); color: var(--ink); font-size: 14px; }
+  .src-table .c.mono { font-family: var(--mono); font-size: 12px; color: var(--accent); font-weight: 600; }
+  .src-table .c.muted { color: var(--muted); font-family: var(--mono); font-size: 12px; }
+  .src-table > div:nth-last-child(-n+3) { border-bottom: 0; }
+
+  /* ── competitive table ── */
+  .comp { width:100%; border-collapse: collapse; font-size: 17px; }
+  .comp th, .comp td { padding: 18px 20px; text-align:left; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  .comp th { font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); font-weight: 600; border-bottom: 2px solid var(--ink); }
+  .comp td.feat { font-weight: 700; color: var(--ink); font-family: var(--display); letter-spacing: -0.01em; }
+  .comp td.old { color: var(--muted); }
+  .comp td.new { color: var(--ink); font-weight: 500; }
+  .comp td.new::before { content:"→  "; color: var(--accent); font-weight: 700; }
+
+  /* ── roadmap rail ── */
+  .rail { position: relative; margin-top: 56px; padding: 0 24px; }
+  .rail::before { content:""; position: absolute; left: 24px; right: 24px; top: 36px; height: 1px; background: var(--rule); }
+  .rail .steps { display:grid; grid-template-columns: repeat(6, 1fr); gap: 20px; }
+  .rail .step { position:relative; padding-top: 70px; }
+  .rail .step .bullet { position: absolute; top: 28px; left: 0; width: 18px; height: 18px; border-radius: 50%; background: #ffffff; border: 2px solid var(--muted-2); }
+  .rail .step.active .bullet { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 0 5px rgba(5,150,105,0.15); }
+  .rail .step .phase { font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+  .rail .step h6 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 6px 0 8px; letter-spacing: -0.02em; line-height: 1.15; color: var(--ink); }
+  .rail .step p { font-size: 13px; line-height: 1.55; color: var(--muted); margin: 0; }
+
+  /* ── team ── */
+  .team-grid { display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; margin-top: 48px; }
+  .person { display:flex; flex-direction:column; gap: 12px; padding: 28px; background: #ffffff; border: 1px solid var(--rule); border-radius: 14px; box-shadow: var(--shadow-card); }
+  .person .av { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), #047857); }
+  .person .av.two { background: linear-gradient(135deg, #6366f1, #312e81); }
+  .person .av.three { background: linear-gradient(135deg, #f59e0b, #b45309); }
+  .person .nm { font-family: var(--display); font-weight: 800; font-size: 26px; letter-spacing: -0.025em; color: var(--ink); }
+  .person .ro { font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+  .person .bio { font-size: 14px; line-height: 1.55; color: var(--muted); }
+
+  /* ── gap stat ── */
+  .gap-num { font-family: var(--display); font-weight: 900; font-size: 64px; line-height: 0.95; letter-spacing: -0.045em; color: var(--ink); }
+  .gap-num em { color: var(--accent); font-style: normal; }
+  .gap-h { font-family: var(--display); font-weight: 700; font-size: 19px; letter-spacing: -0.02em; line-height: 1.2; color: var(--ink); }
+
+  /* ── ask ── */
+  .ask-big { font-family: var(--display); font-weight: 900; font-size: 220px; line-height: 1; letter-spacing: -0.05em; color: var(--accent); font-feature-settings: "tnum" 1; }
+  .ask-lbl { font-family: var(--mono); font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-top: 14px; font-weight: 600; }
+
+  /* ── tweaks panel ── */
+  #tweaks { position: fixed; right: 20px; bottom: 80px; background: #ffffff; color: var(--ink); border: 1px solid var(--rule); border-radius: 12px; padding: 18px; width: 280px; z-index: 2147483647; font-family: var(--sans); font-size: 13px; display: none; box-shadow: var(--shadow-lift); }
+  #tweaks[data-open] { display: block; }
+  #tweaks h4 { margin: 0 0 14px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  #tweaks .row { display:flex; flex-direction:column; gap:8px; margin-bottom:14px; }
+  #tweaks .row label { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-family: var(--mono); font-weight: 600; }
+  #tweaks .swatches { display:flex; gap:8px; }
+  #tweaks .sw { width: 28px; height: 28px; border-radius: 50%; cursor: pointer; border: 2px solid transparent; transition: all 0.15s; }
+  #tweaks .sw[data-on] { border-color: var(--ink); transform: scale(1.1); }
+  #tweaks .seg { display:flex; background: var(--bg-2); border-radius: 8px; padding: 2px; border: 1px solid var(--rule); }
+  #tweaks .seg button { flex:1; padding: 7px 10px; background: transparent; border: 0; color: var(--muted); border-radius: 6px; font-size: 12px; cursor: pointer; font-family: inherit; font-weight: 500; }
+  #tweaks .seg button[data-on] { background: var(--ink); color: #fff; }
+</style>
+</head>
+<body>
+
+<deck-stage width="1920" height="1080">
+
+  <!-- ============ 1. COVER ============ -->
+  <section class="slide" data-label="01 Cover">
+    <div class="cover-glow"></div>
+    <div class="cover-grid"></div>
+    <div class="cover">
+      <div class="top">
+        <div style="display:flex; gap:10px; align-items:center; font-weight:600; font-size:15px; color:var(--ink);"><span class="mark-dot"></span> Philanthropy&nbsp;OS</div>
+        <div class="seal">Bill &amp; Melinda Gates Foundation · RFP Response · 2026</div>
+      </div>
+      <div>
+        <p class="eyebrow">Project Proposal</p>
+        <h1 class="display"><em>AI</em> for every donor.<br>Every nonprofit.<br>Real-time <em>impact.</em></h1>
+        <p class="lede" style="margin-top:36px; max-width: 1080px;">AI learns each donor's giving profile. Agents automatically allocate monthly budgets. Every donation streams live impact back to the donor.</p>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:flex-end;">
+        <div>
+          <div class="num" style="color: var(--muted);">SUBMITTED BY</div>
+          <div style="font-family: var(--sans); font-weight: 600; font-size: 28px; margin-top:8px; letter-spacing: -0.02em;">Tashfeen Ekram, MD in partnership with OBAT Helpers</div>
+          <div style="font-size:14px; color:var(--muted); margin-top:6px;">OBAT Health  — primary applicant &amp; fiscal sponsor</div>
+        </div>
+        <div style="text-align:right; font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; color: var(--muted-2);">v1.0 · CONFIDENTIAL</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 2. EXECUTIVE SUMMARY ============ -->
+  <section class="slide" data-label="02 Executive Summary">
+    <div class="chrome"><div class="mark"><span class="mark-dot"></span> Philanthropy OS</div><div>§ 01 &nbsp; Executive Summary</div></div>
+    <div class="pad" style="justify-content:center;">
+      <p class="eyebrow">The proposal, in a single page</p>
+      <h2 class="title" style="max-width: 1500px;">An <em>AI-native</em> operating layer between donors and every nonprofit.</h2>
+      <p class="lede" style="max-width: 1400px; margin-bottom: 32px;">Philanthropy OS is built around six AI surfaces — three donor-facing, three backend. Profiling agents understand intent. A monthly giving agent automates allocation. LLM ingestion + web grounding builds profiles for charities not yet on the platform. Crowd-sourced public sentiment from Reddit and X augments the Trust Index. Together they turn passive intent into automated, high-signal giving.</p>
+      <div style="margin-bottom: 48px; padding: 16px 22px; background: rgba(99,102,241,0.06); border: 1px solid rgba(99,102,241,0.25); border-radius: 12px; display:flex; gap: 24px; align-items:center; font-size: 15px; color: var(--ink-2); line-height: 1.55;">
+        <span class="num" style="color: #4338ca; flex-shrink:0;">SELF-LEARNING PLATFORM</span>
+        <span>Every AI surface tracks its own performance against the industry benchmarks laid out in slide 3 — conversion lift, catalog expansion, sentiment freshness, match capture, crisis latency, and planning adoption. The platform optimizes itself to beat these standards, continuously.</span>
+      </div>
+      <div class="grid-4" style="gap: 22px;">
+        <div class="card pillar">
+          <div class="k">01 · Donor AI</div>
+          <div class="h">Profiling Agent</div>
+          <div class="p">Watches each donor as they explore — builds a live interest profile to drive higher conversion at the moment of giving.</div>
+        </div>
+        <div class="card pillar">
+          <div class="k">02 · Donor AI</div>
+          <div class="h">Monthly Giving Agent</div>
+          <div class="p">Autonomously matches a donor's profile to active campaigns and executes their monthly budget — Copilot or Autopilot.</div>
+        </div>
+        <div class="card pillar">
+          <div class="k">03 · Donor AI</div>
+          <div class="h">Ad-hoc Planning Copilot</div>
+          <div class="p">On-demand AI for legacy planning, year-end giving, DAF strategy — a planner-grade copilot in every donor's pocket.</div>
+        </div>
+        <div class="card pillar">
+          <div class="k">04 · Backend AI</div>
+          <div class="h">LLM Charity Ingestion</div>
+          <div class="p">Charities not yet enrolled still get a live profile — LLM agents grounded in web search pull active campaigns onto the platform.</div>
+        </div>
+      </div>
+      <div class="grid-2" style="gap: 22px; margin-top: 22px;">
+        <div class="card pillar" style="display:grid; grid-template-columns: max-content 1fr; gap: 20px; align-items:center;">
+          <div><div class="k">05 · Backend AI</div><div class="h" style="margin-top:6px;">Public Sentiment</div></div>
+          <div class="p">Crowd-sourced opinion from Reddit, X.com and forums — weighted into the Trust Index alongside IRS, Candid, and Charity Navigator.</div>
+        </div>
+        <div class="card pillar" style="display:grid; grid-template-columns: max-content 1fr; gap: 20px; align-items:center;">
+          <div><div class="k">06 · Backend AI</div><div class="h" style="margin-top:6px;">Crowd-sourced Campaigns</div></div>
+          <div class="p">AI scouts the open web for emerging fundraisers, validates them, and adds them to the platform — the long tail of giving, indexed.</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer"><div>Gates Foundation · RFP Response</div><div>02 / 18</div></div>
+  </section>
+
+  <!-- ============ 3. THE GAP ============ -->
+  <section class="slide" data-label="03 The Gap">
+    <div class="chrome"><div class="mark"><span class="mark-dot"></span> Philanthropy OS</div><div>§ 02 &nbsp; The AI ROI Gap</div></div>
+    <div class="pad" style="justify-content:center; padding-top: 110px; padding-bottom: 80px;">
+      <p class="eyebrow" style="margin-bottom: 18px;">Why these six AI surfaces — and why now</p>
+      <h2 class="title" style="max-width: 1700px; font-size: 60px; margin-bottom: 18px;">The legacy stack can't <em>profile, ingest,</em> or <em>act</em> in real time. AI can.</h2>
+      <p class="lede" style="max-width: 1500px; margin-bottom: 32px; font-size: 19px;">Each gap below maps to a specific surface from the previous slide — measurable today, closeable only by an AI-native architecture. This is the ROI envelope a Gates grant unlocks.</p>
+
+      <div class="grid-3" style="gap: 18px;">
+        <!-- Gap 01 — profiling -->
+        <div class="card" style="padding: 22px; display:flex; flex-direction:column; gap: 10px;">
+          <div style="display:flex; align-items:center; gap: 10px;">
+            <span class="num">GAP 01</span>
+            <span class="chip accent" style="font-size: 9px; padding: 3px 8px;">→ AGENT 01 · PROFILING</span>
+          </div>
+          <div class="gap-num"><em style="color: var(--accent); font-style: normal;">2%</em></div>
+          <div class="gap-h">Donor-page conversion on charity sites today.</div>
+          <p style="font-size: 14px; line-height: 1.55; color: var(--muted); margin: 0;">Static donate buttons can't read intent. A live profiling agent that watches dwell, clicks, and follow-through lifts conversion 3–5× by surfacing the right ask at the right moment.</p>
+          <div style="margin-top: 4px; padding-top: 14px; border-top: 1px solid var(--rule-soft); font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.06em; font-weight: 600;">UNLOCK · profiling agent → ~3× lift on the same traffic</div>
+        </div>
+
+        <!-- Gap 02 — ingestion / catalog -->
+        <div class="card" style="padding: 22px; display:flex; flex-direction:column; gap: 10px;">
+          <div style="display:flex; align-items:center; gap: 10px;">
+            <span class="num">GAP 02</span>
+            <span class="chip" style="background: rgba(99,102,241,0.10); border-color: rgba(99,102,241,0.32); color: #4338ca; font-size: 9px; padding: 3px 8px;">→ AGENT 04 · INGESTION</span>
+          </div>
+          <div class="gap-num"><em style="color: var(--accent); font-style: normal;">&lt;3%</em></div>
+          <div class="gap-h">Of 1.8M US 501(c)(3)s sit in any donor platform's catalog.</div>
+          <p style="font-size: 14px; line-height: 1.55; color: var(--muted); margin: 0;">The other 97% never enroll. LLM ingestion grounded in web search builds a live profile for every charity — not just the ones who self-onboard. The long tail, indexed for the first time.</p>
+          <div style="margin-top: 4px; padding-top: 14px; border-top: 1px solid var(--rule-soft); font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.06em; font-weight: 600;">UNLOCK · LLM ingestion → ~30× catalog expansion</div>
+        </div>
+
+        <!-- Gap 03 — trust / sentiment -->
+        <div class="card" style="padding: 22px; display:flex; flex-direction:column; gap: 10px;">
+          <div style="display:flex; align-items:center; gap: 10px;">
+            <span class="num">GAP 03</span>
+            <span class="chip" style="background: rgba(225,29,72,0.08); border-color: rgba(225,29,72,0.30); color: var(--danger); font-size: 9px; padding: 3px 8px;">→ AGENT 05 · SENTIMENT</span>
+          </div>
+          <div class="gap-num"><em style="color: var(--accent); font-style: normal;">12–18mo</em></div>
+          <div class="gap-h">Lag on Charity Navigator and IRS-derived ratings.</div>
+          <p style="font-size: 14px; line-height: 1.55; color: var(--muted); margin: 0;">By the time a 990 is parsed, the controversy is over. AI sentiment from Reddit, X, and forums adds a fifth, real-time trust signal — controversies surface in days, not fiscal years.</p>
+          <div style="margin-top: 4px; padding-top: 14px; border-top: 1px solid var(--rule-soft); font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.06em; font-weight: 600;">UNLOCK · 5-source Trust Index → ~365× faster signal</div>
+        </div>
+
+        <!-- Gap 04 — monthly allocation -->
+        <div class="card" style="padding: 22px; display:flex; flex-direction:column; gap: 10px;">
+          <div style="display:flex; align-items:center; gap: 10px;">
+            <span class="num">GAP 04</span>
+            <span class="chip" style="background: rgba(245,158,11,0.10); border-color: rgba(245,158,11,0.32); color: #b45309; font-size: 9px; padding: 3px 8px;">→ AGENT 02 · MONTHLY GIVING</span>
+          </div>
+          <div class="gap-num"><em style="color: var(--accent); font-style: normal;">$7B</em></div>
+          <div class="gap-h">Employer match left unclaimed annually.</div>
+          <p style="font-size: 14px; line-height: 1.55; color: var(--muted); margin: 0;">Recurring "set-and-forget" donations don't leverage employee matching. An autonomous monthly agent rebalances against live signal and surfaces match at execution time.</p>
+          <div style="margin-top: 4px; padding-top: 14px; border-top: 1px solid var(--rule-soft); font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.06em; font-weight: 600;">UNLOCK · monthly agent → ~2× effective dollar via match + leverage</div>
+        </div>
+
+        <!-- Gap 05 — crisis -->
+        <div class="card" style="padding: 22px; display:flex; flex-direction:column; gap: 10px;">
+          <div style="display:flex; align-items:center; gap: 10px;">
+            <span class="num">GAP 05</span>
+            <span class="chip" style="background: rgba(225,29,72,0.08); border-color: rgba(225,29,72,0.30); color: var(--danger); font-size: 9px; padding: 3px 8px;">→ AGENT 06 · CROWD CAMPAIGNS</span>
+          </div>
+          <div class="gap-num"><em style="color: var(--accent); font-style: normal;">72hr</em></div>
+          <div class="gap-h">Lag from breaking crisis to vetted, fundable responder.</div>
+          <p style="font-size: 14px; line-height: 1.55; color: var(--muted); margin: 0;">By the time donors find a trusted responder, attention has moved on. AI scouts validate emerging fundraisers in minutes — Crisis Responder Mode auto-allocates a donor's pre-approved emergency budget.</p>
+          <div style="margin-top: 4px; padding-top: 14px; border-top: 1px solid var(--rule-soft); font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.06em; font-weight: 600;">UNLOCK · Crisis Pulse → minutes, not days</div>
+        </div>
+
+        <!-- Gap 06 — planning -->
+        <div class="card" style="padding: 22px; display:flex; flex-direction:column; gap: 10px;">
+          <div style="display:flex; align-items:center; gap: 10px;">
+            <span class="num">GAP 06</span>
+            <span class="chip" style="background: rgba(99,102,241,0.10); border-color: rgba(99,102,241,0.32); color: #4338ca; font-size: 9px; padding: 3px 8px;">→ AGENT 03 · PLANNING COPILOT</span>
+          </div>
+          <div class="gap-num"><em style="color: var(--accent); font-style: normal;">$30T</em></div>
+          <div class="gap-h">Generational transfer with no donor-grade planning layer.</div>
+          <p style="font-size: 14px; line-height: 1.55; color: var(--muted); margin: 0;">DAFs, bequests, and bunching require a $400/hr financial planner — most donors never get one. An ad-hoc copilot puts planner-grade reasoning in every donor's pocket, on demand.</p>
+          <div style="margin-top: 4px; padding-top: 14px; border-top: 1px solid var(--rule-soft); font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.06em; font-weight: 600;">UNLOCK · planning copilot → planner-grade at zero marginal cost</div>
+        </div>
+      </div>
+
+      <div style="margin-top: 24px; padding: 14px 22px; background: rgba(5,150,105,0.06); border: 1px solid rgba(5,150,105,0.25); border-radius: 10px; display:flex; gap: 22px; align-items:center; font-size: 13px; color: var(--ink-2); line-height: 1.45;">
+        <span class="num" style="color: var(--accent); flex-shrink:0; font-size: 10px;">THE THESIS</span>
+        <span>None of these gaps are fixable with better forms or another rating site. Every one requires <strong style="color: var(--ink);">an agent that reasons over live, multi-source signal.</strong> <strong style="color: var(--ink);">These numbers become the platform's benchmarks:</strong> each AI surface tracks and optimizes against them, continuously learning to beat industry standards.</span>
+      </div>
+    </div>
+    <div class="footer"><div>Gates Foundation · RFP Response</div><div>03 / 18</div></div>
+  </section>
+
+  <!-- ============ 3A. CORE THESIS ============ -->
+  <section class="slide tinted" data-label="03A Core Thesis">
+    <div class="chrome"><div class="mark"><span class="mark-dot"></span> Philanthropy OS</div><div>§ 02.1 &nbsp; The Engine</div></div>
+    <div class="pad" style="justify-content:center;">
+      <p class="eyebrow">Intelligent donor profiling × Agentic giving</p>
+      <h2 class="title" style="max-width: 1600px;">Profile × Agent. <em>The loop tightens with every donation.</em></h2>
+      <p class="lede" style="margin-bottom: 48px; max-width: 1400px;">Every platform has donor data. Every platform has automation. We're the first to <strong style="color: var(--ink);">multiply the two into a self-learning engine</strong> — the profile feeds the agent, the agent acts on the profile, outcomes sharpen both.</p>
+      
+      <div style="display:grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 24px; align-items:center; margin-bottom: 48px;">
+        <!-- Profile -->
+        <div class="card" style="padding: 32px 28px; text-align:center; border-top: 4px solid var(--accent);">
+          <div style="font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px;">Input</div>
+          <h3 style="font-family: var(--serif); font-size: 44px; line-height: 1.1; color: var(--ink); margin: 0 0 14px;">Profile</h3>
+          <p style="font-size: 15px; line-height: 1.5; color: var(--muted); margin: 0;">Interests · Capacity · Values · Tax goals · Match rules · Crisis preferences</p>
+        </div>
+
+        <!-- Arrow -->
+        <div style="font-size: 48px; color: var(--accent); line-height:1;">→</div>
+
+        <!-- Agent -->
+        <div class="card" style="padding: 32px 28px; text-align:center; border-top: 4px solid #f59e0b;">
+          <div style="font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #b45309; margin-bottom: 10px;">Execution</div>
+          <h3 style="font-family: var(--serif); font-size: 44px; line-height: 1.1; color: var(--ink); margin: 0 0 14px;">Agent</h3>
+          <p style="font-size: 15px; line-height: 1.5; color: var(--muted); margin: 0;">Matches monthly budget to aligned orgs · Leverages employer match · Auto-responds to crises</p>
+        </div>
+
+        <!-- Arrow -->
+        <div style="font-size: 48px; color: var(--accent); line-height:1;">→</div>
+
+        <!-- Outcomes -->
+        <div class="card" style="padding: 32px 28px; text-align:center; border-top: 4px solid #6366f1;">
+          <div style="font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #6366f1; margin-bottom: 10px;">Feedback</div>
+          <h3 style="font-family: var(--serif); font-size: 44px; line-height: 1.1; color: var(--ink); margin: 0 0 14px;">Outcomes</h3>
+          <p style="font-size: 15px; line-height: 1.5; color: var(--muted); margin: 0;">Disbursements · Impact metrics · Donor satisfaction · Engagement signals</p>
+        </div>
+      </div>
+
+      <!-- Loop-back -->
+      <div style="display:flex; align-items:center; gap: 28px; padding: 24px 28px; background: rgba(0,212,168,0.06); border: 1px solid rgba(0,212,168,0.2); border-radius:14px;">
+        <div style="font-size: 48px; color: var(--accent); line-height:1;">↺</div>
+        <div>
+          <h4 style="font-family: var(--serif); font-size: 26px; color: var(--ink); margin: 0 0 6px;">The loop closes.</h4>
+          <p style="font-size: 15px; line-height: 1.6; color: var(--ink-soft); margin: 0;">Outcomes stream back to the Impact Passport. The agent watches which donations led to highest satisfaction, which orgs closed the loop fastest. Profile sharpens. Agent improves. <strong style="color: var(--ink);">Every donor becomes a better donor, automatically.</strong></p>
+        </div>
+      </div>
+    </div>
+    <div class="footer"><div>Gates Foundation · RFP Response</div><div>03A / 18</div></div>
+  </section>
+
+  <!-- ============ 4. DONOR HUB ============ -->
+  <section class="slide" data-label="04 Donor Hub">
+    <div class="chrome"><div class="mark"><span class="mark-dot"></span> Philanthropy OS</div><div>§ 03 &nbsp; The Donor Hub</div></div>
+    <div class="pad" style="padding: 96px 112px 60px;">
+      <div style="display:grid; grid-template-columns: 440px 1fr; gap: 64px; align-items: center;">
+        <div>
+          <p class="eyebrow">Surface A · For donors</p>
+          <h3 class="sub" style="font-size: 52px;">An <em style="color: var(--accent);">AI profiling agent</em>, not a search bar.</h3>
+          <p style="font-size: 17px; line-height: 1.55; color: var(--muted); margin-bottom: 28px;">A profiling agent watches every interaction — what a donor reads, lingers on, donates to — and builds a live interest model that drives conversion. The Impact Matcher then ranks thousands of nonprofits by alignment, Trust Index, and active crisis response.</p>
+          <div style="display:flex; flex-direction:column; gap: 12px;">
+            <div style="display:flex; gap:12px; align-items:flex-start;"><div style="width:24px; height:24px; border-radius:6px; background: var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; flex-shrink:0; margin-top:2px; font-family: var(--mono);">1</div><div style="font-size:15px; color:var(--ink-2);"><strong style="color:var(--ink);">Live profiling agent</strong> — passively learns interests as the donor explores and gives.</div></div>
+            <div style="display:flex; gap:12px; align-items:flex-start;"><div style="width:24px; height:24px; border-radius:6px; background: var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; flex-shrink:0; margin-top:2px; font-family: var(--mono);">2</div><div style="font-size:15px; color:var(--ink-2);"><strong style="color:var(--ink);">Ad-hoc planning copilot</strong> — on-demand AI for legacy, DAF, and year-end strategy.</div></div>
+            <div style="display:flex; gap:12px; align-items:flex-start;"><div style="width:24px; height:24px; border-radius:6px; background: var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; flex-shrink:0; margin-top:2px; font-family: var(--mono);">3</div><div style="font-size:15px; color:var(--ink-2);"><strong style="color:var(--ink);">Live crisis map</strong> — every active global crisis pinned, with vetted responders ranked.</div></div>
+          </div>
+        </div>
+        <div style="border-radius:14px; overflow:hidden; box-shadow: var(--shadow-lift); border: 1px solid var(--rule); display:flex; flex-direction:column; height: 680px;">
+          <div style="padding: 10px 16px; background:#f8fafc; border-bottom: 1px solid var(--rule); font-size:11px; font-family:var(--mono); color:var(--muted); display:flex; align-items:center; gap:8px; flex-shrink:0;">
+            <span style="display:flex;gap:5px;"><span style="width:10px;height:10px;border-radius:50%;background:#f87171;display:inline-block;"></span><span style="width:10px;height:10px;border-radius:50%;background:#fbbf24;display:inline-block;"></span><span style="width:10px;height:10px;border-radius:50%;background:#34d399;display:inline-block;"></span></span>
+            <span>philanthropy-os.onrender.com — Donor Onboarding</span>
+          </div>
+          <img src="uploads/Donor oboarding.png" alt="AI Onboarding Assistant" style="width:100%; flex:1; object-fit:cover; object-position:top center;" />
+        </div>
+      </div>
+    </div>
+    <div class="footer"><div>Gates Foundation · RFP Response</div><div>04 / 18</div></div>
+  </section>
+
+  <!-- ============ 5. IMPACT PASSPORT ============ -->
+  <section class="slide" data-label="05 Impact Passport">
+    <div class="chrome"><div class="mark"><span class="mark-dot"></span> Philanthropy OS</div><div>§ 04 &nbsp; Impact Passport</div></div>
+    <div class="pad" style="padding: 96px 112px 60px;">
+      <div style="display:grid; grid-template-columns: 440px 1fr; gap: 64px; align-items:center;">
+        <div>
+          <p class="eyebrow">Surface B · On every charity site</p>
+          <h3 class="sub" style="font-size: 52px;">An <em style="color: var(--accent);">AI Concierge Bot</em> embedded on every charity website.</h3>
+          <p style="font-size: 17px; line-height: 1.55; color: var(--muted); margin-bottom: 22px;">A drop-in chat widget that carries the donor's Passport with them. It scans the charity's site in real time to surface campaigns, answers "is this aligned with my values?", and closes the loop with seamless one-click payments using stored platform credentials, cards, and employer-match.</p>
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <div class="card tight"><div class="num">GUIDE</div><div style="margin-top:8px; font-family: var(--sans); font-weight: 600; font-size: 16px; line-height:1.25; letter-spacing: -0.01em;">Conversational concierge — does this charity fit my profile?</div></div>
+            <div class="card tight"><div class="num">SCAN</div><div style="margin-top:8px; font-family: var(--sans); font-weight: 600; font-size: 16px; line-height:1.25; letter-spacing: -0.01em;">Live-crawls the charity's site to surface active campaigns.</div></div>
+            <div class="card tight"><div class="num">ALIGN</div><div style="margin-top:8px; font-family: var(--sans); font-weight: 600; font-size: 16px; line-height:1.25; letter-spacing: -0.01em;">Reads the Passport — 85% values match shown inline.</div></div>
+            <div class="card tight"><div class="num">PAY</div><div style="margin-top:8px; font-family: var(--sans); font-weight: 600; font-size: 16px; line-height:1.25; letter-spacing: -0.01em;">Seamless 1-click checkout — cards + match on file.</div></div>
+            <div class="card tight"><div class="num">MATCH</div><div style="margin-top:8px; font-family: var(--sans); font-weight: 600; font-size: 16px; line-height:1.25; letter-spacing: -0.01em;">Employer 2:1 surfaced at the moment of giving.</div></div>
+            <div class="card tight"><div class="num">PULSE</div><div style="margin-top:8px; font-family: var(--sans); font-weight: 600; font-size: 16px; line-height:1.25; letter-spacing: -0.01em;">Crisis Responder badge for active emergencies.</div></div>
+          </div>
+        </div>
+        <div style="border-radius:14px; overflow:hidden; box-shadow: var(--shadow-lift); border: 1px solid var(--rule); display:flex; flex-direction:column; max-width: 1180px; height: 620px;">
+          <div style="padding: 10px 16px; background:#f8fafc; border-bottom: 1px solid var(--rule); font-size:11px; font-family:var(--mono); color:var(--muted); display:flex; align-items:center; gap:8px; flex-shrink:0;">
+            <span style="display:flex;gap:5px;"><span style="width:10px;height:10px;border-radius:50%;background:#f87171;display:inline-block;"></span><span style="width:10px;height:10px;border-radius:50%;background:#fbbf24;display:inline-block;"></span><span style="width:10px;height:10px;border-radius:50%;background:#34d399;display:inline-block;"></span></span>
+            <span>philanthropy-os.onrender.com — Giving Concierge on charity site</span>
+          </div>
+          <img src="uploads/Cahrity Integration.png" alt="Charity Integration — Giving Concierge" style="width:100%; flex:1; object-fit:cover; object-position:top center;" />
+        </div>
+      </div>
+    </div>
+    <div class="footer"><div>Gates Foundation · RFP Response</div><div>05 / 18</div></div>
+  </section>
+
+  <!-- ============ 6. AGENTIC FLOW ============ -->
+  <section class="slide" data-label="06 Agentic Giving">
+    <div class="chrome"><div class="mark"><span class="mark-dot"></span> Philanthropy OS</div><div>§ 05 &nbsp; Agentic Giving Flow</div></div>
+    <div class="pad" style="justify-content: flex-start; padding-top: 140px;">
+      <p class="eyebrow">From intent → automated allocation</p>
+      <h2 class="title" style="max-width: 1500px;">The Agentic Engine turns a monthly budget into a portfolio of high-signal giving.</h2>
+
+      <div class="flow">
+        <div class="node">
+          <div class="ico">01</div>
+          <div class="k">Budget</div>
+          <div class="h">Donor sets parameters</div>
+          <div class="p">Monthly cap, cause weights, crisis-response quota, employer-match rules, tax-year targets.</div>
+          <div class="arrow">→</div>
+        </div>
+        <div class="node">
+          <div class="ico">02</div>
+          <div class="k">Ingest</div>
+          <div class="h">Signals stream in</div>
+          <div class="p">Trust Index updates, Crisis Pulse events, nonprofit project milestones, 990 anomaly flags.</div>
+          <div class="arrow">→</div>
+        </div>
+        <div class="node">
+          <div class="ico">03</div>
+          <div class="k">Reason</div>
+          <div class="h">LLM-built Giving Plan</div>
+          <div class="p">Per-donor plan ranking by alignment, Trust Index, urgency, match leverage, and tax efficiency.</div>
+          <div class="arrow">→</div>
+        </div>
+        <div class="node">
+          <div class="ico">04</div>
+          <div class="k">Execute</div>
+          <div class="h">Donor approves or runs</div>
+          <div class="p">One-click approval in Copilot, or autonomous execution in Autopilot / Crisis Responder mode.</div>
+          <div class="arrow">→</div>
+        </div>
+        <div class="node">
+          <div class="ico">05</div>
+          <div class="k">Report</div>
+          <div class="h">Closed-loop impact</div>
+          <div class="p">Auto IRS receipts, impact stories, Year in Giving report, and portfolio rebalance for next cycle.</div>
+        </div>
+      </div>
+
+      <div class="modes">
+        <div class="mode">
+          <div class="lvl"><span class="d"></span>Mode 01 · Human in the loop</div>
+          <h6>Copilot</h6>
+          <p>AI composes a monthly Giving Plan. Donor reviews, tweaks, and approves allocations with one click.</p>
+        </div>
+        <div class="mode amber">
+          <div class="lvl"><span class="d"></span>Mode 02 · Autonomous</div>
+          <h6>Autopilot</h6>
+          <p>AI allocates the monthly budget across aligned orgs based on live Trust Index and impact signals.</p>
+        </div>
+        <div class="mode danger">
+          <div class="lvl"><span class="d"></span>Mode 03 · Opt-in Emergency</div>
+          <h6>Crisis Responder</h6>
+          <p>A user-set % of the monthly budget automatically redirects to vetted responders on validated crises.</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer"><div>Gates Foundation · RFP Response</div><div>06 / 18</div></div>
+  </section>
+
+  <!-- ============ 6A. DONOR-FACING AI ============ -->
+  <section class="slide" data-label="06A Donor-Facing AI">
+    <div class="chrome"><div class="mark"><span class="mark-dot"></span> Philanthropy OS</div><div>§ 05.1 &nbsp; Donor-Facing AI</div></div>
+    <div class="pad" style="justify-content:flex-start; padding-top: 110px;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom: 10px;">
+        <span class="num">AGENT 03</span>
+        <span class="chip" style="background: rgba(99,102,241,0.10); border-color: rgba(99,102,241,0.32); color: var(--indigo); font-size:10px; padding:3px 9px;">On demand</span>
+      </div>
+      <h2 class="title" style="max-width: 1500px; margin-bottom: 8px;">The <em>Giving Strategy Copilot</em> — one-time strategic donations</h2>
+      <p class="lede" style="max-width: 1100px; margin-bottom: 24px;">An LLM-powered planning assistant for donors making major, one-time strategic gifts. It doesn't automate monthly giving — it advises on complex, high-stakes decisions like bunching strategies, DAF timing, legacy planning, and capital gains offsets.</p>
+
+      <div style="display: grid; grid-template-columns: 720px 1fr; gap: 32px; align-items: start; max-width: 1700px;">
+        <!-- Left: Screenshot -->
+        <div style="border-radius: 10px; overflow: hidden; border: 1px solid var(--rule); box-shadow: 0 6px 20px rgba(0,0,0,0.10);">
+          <img src="uploads/Panner Givign Strategy.png" alt="Giving Strategy Copilot" style="width: 100%; display: block;" />
+        </div>
+
+        <!-- Right: Description -->
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; color: var(--accent); font-weight: 700;">FOR ONE-TIME STRATEGIC GIFTS</div>
+            
+            <div style="display:flex; gap:10px; align-items:start;">
+              <span style="width:5px; height:5px; border-radius:50%; background: var(--accent); margin-top: 7px; flex-shrink: 0;"></span>
+              <div>
+                <div style="font-weight: 600; font-size: 15px; color: var(--ink); margin-bottom: 2px;">Tax optimization strategies</div>
+                <div style="font-size: 13px; color: var(--muted); line-height: 1.5;">Bunching, DAF timing, capital gains harvesting, QCD planning.</div>
+              </div>
+            </div>
+
+            <div style="display:flex; gap:10px; align-items:start;">
+              <span style="width:5px; height:5px; border-radius:50%; background: var(--accent); margin-top: 7px; flex-shrink: 0;"></span>
+              <div>
+                <div style="font-weight: 600; font-size: 15px; color: var(--ink); margin-bottom: 2px;">Legacy & bequest planning</div>
+                <div style="font-size: 13px; color: var(--muted); line-height: 1.5;">Estate gifts, charitable trusts, multi-year pledge structures.</div>
+              </div>
+            </div>
+
+            <div style="display:flex; gap:10px; align-items:start;">
+              <span style="width:5px; height:5px; border-radius:50%; background: var(--accent); margin-top: 7px; flex-shrink: 0;"></span>
+              <div>
+                <div style="font-weight: 600; font-size: 15px; color: var(--ink); margin-bottom: 2px;">Grounded in donor context</div>
+                <div style="font-size: 13px; color: var(--muted); line-height: 1.5;">Pulls from the Impact Passport — past gifts, causes, Trust Index.</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="padding: 16px 18px; background: rgba(99,102,241,0.06); border: 1px solid rgba(99,102,241,0.25); border-radius: 10px;">
+            <div style="font-family: var(--mono); font-size: 9px; letter-spacing: 0.2em; color: var(--indigo); font-weight: 700; margin-bottom: 7px;">HUMAN IN THE LOOP</div>
+            <div style="color: var(--ink-2); font-size: 13px; line-height: 1.55;">This agent never executes. It models scenarios, surfaces trade-offs, and lets the donor decide. When ready, one-click checkout applies the plan.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer"><div>Gates Foundation · RFP Response</div><div>07 / 18</div></div>
+  </section>
+
+  <!-- ============ 6B. BACKEND AI ============ -->
+  <section class="slide tinted" data-label="06B Backend AI">
+    <div class="chrome"><div class="mark"><span class="mark-dot"></span> Philanthropy OS</div><div>§ 05.2 &nbsp; Backend AI</div></div>
+    <div class="pad" style="justify-content:center;">
+      <p class="eyebrow">The unseen layer · Coverage, signal, supply</p>
+      <h2 class="title" style="max-width: 1500px;">AI that <em>builds the catalog</em> — even for charities not yet on the platform.</h2>
+      <p class="lede" style="max-width: 1400px; margin-bottom: 48px;">We don't wait for nonprofits to enroll. LLM agents grounded in web search profile every charity, surface public sentiment, and crowd-source emerging campaigns from across the open web.</p>
+
+      <div class="grid-3" style="gap: 28px;">
+        <!-- B01 LLM Charity Ingestion -->
+        <div class="card" style="display:flex; flex-direction:column; gap:14px; padding: 32px; background:#fff;">
+          <div class="num">PIPELINE 01</div>
+          <h3 class="sub" style="font-size: 28px; margin: 0;">LLM Charity Ingestion</h3>
+          <p style="color: var(--muted); font-size: 15px; line-height: 1.55; margin: 0;">For charities <em>not yet enrolled</em>, we still maintain a profile. LLM agents grounded in web search tools pull active campaigns and bring that info onto our platform — automatically refreshed.</p>
+          <div style="display:flex; flex-direction:column; gap: 8px; margin-top: 4px;">
+            <div style="display:flex; gap:8px; align-items:center; font-size: 12px; color: var(--ink-2);"><span style="width:6px; height:6px; border-radius:50%; background: var(--accent);"></span>Web search · Brave / Tavily / Perplexity</div>
+            <div style="display:flex; gap:8px; align-items:center; font-size: 12px; color: var(--ink-2);"><span style="width:6px; height:6px; border-radius:50%; background: var(--accent);"></span>IRS 990 + ProPublica grounding</div>
+            <div style="display:flex; gap:8px; align-items:center; font-size: 12px; color: var(--ink-2);"><span style="width:6px; height:6px; border-radius:50%; background: var(--accent);"></span>Citation-backed campaign extraction</div>
+            <div style="display:flex; gap:8px; align-items:center; font-size: 12px; color: var(--ink-2);"><span style="width:6px; height:6px; border-radius:50%; background: var(--accent);"></span>Hourly delta sync</div>
+          </div>
+        </div>
+
+        <!-- B02 Public Sentiment -->
+        <div class="card" style="display:flex; flex-direction:column; gap:14px; padding: 32px; background:#fff;">
+          <div class="num">PIPELINE 02</div>
+          <h3 class="sub" style="font-size: 28px; margin: 0;">Public Sentiment Synthesis</h3>
+          <p style="color: var(--muted); font-size: 15px; line-height: 1.55; margin: 0;">Crowd-sourced opinion of charities from public discourse — <em>Reddit, X.com</em>, forums, and review sites. AI summarizes themes, flags controversies, and weights sentiment into the Trust Index.</p>
+          <div style="display:flex; flex-wrap:wrap; gap: 6px; margin-top: 6px;">
+            <span class="chip" style="font-size:10px; padding:3px 9px;">r/Charity</span>
+            <span class="chip" style="font-size:10px; padding:3px 9px;">r/EffectiveAltruism</span>
+            <span class="chip" style="font-size:10px; padding:3px 9px;">X.com</span>
+            <span class="chip" style="font-size:10px; padding:3px 9px;">Trustpilot</span>
+            <span class="chip" style="font-size:10px; padding:3px 9px;">GreatNonprofits</span>
+          </div>
+          <div style="margin-top: 6px; padding: 12px; background: var(--bg-2); border: 1px solid var(--rule); border-radius: 8px; font-size: 12px; color: var(--ink-2); line-height: 1.5;">
+            <span style="color: var(--accent); font-weight: 600;">Synthesized:</span> "Donors consistently praise field transparency; recurring concern about overhead spike Q2 '25 — flagged for review."
+          </div>
+        </div>
+
+        <!-- B03 Crowd-sourced campaigns -->
+        <div class="card" style="display:flex; flex-direction:column; gap:14px; padding: 32px; background:#fff;">
+          <div class="num">PIPELINE 03</div>
+          <h3 class="sub" style="font-size: 28px; margin: 0;">Crowd-sourced Campaigns</h3>
+          <p style="color: var(--muted); font-size: 15px; line-height: 1.55; margin: 0;">AI scouts <em>anything else going on</em> that should be on our platform — emerging fundraisers, mutual aid drives, GoFundMes tied to vetted causes — and adds them to the catalog with provenance.</p>
+          <div style="display:flex; flex-direction:column; gap: 8px; margin-top: 4px;">
+            <div style="display:flex; gap:8px; align-items:center; font-size: 12px; color: var(--ink-2);"><span style="width:6px; height:6px; border-radius:50%; background: var(--indigo);"></span>GoFundMe · ChuffedYouCaring</div>
+            <div style="display:flex; gap:8px; align-items:center; font-size: 12px; color: var(--ink-2);"><span style="width:6px; height:6px; border-radius:50%; background: var(--indigo);"></span>News + social signals</div>
+            <div style="display:flex; gap:8px; align-items:center; font-size: 12px; color: var(--ink-2);"><span style="width:6px; height:6px; border-radius:50%; background: var(--indigo);"></span>LLM dedup &amp; entity resolution</div>
+            <div style="display:flex; gap:8px; align-items:center; font-size: 12px; color: var(--ink-2);"><span style="width:6px; height:6px; border-radius:50%; background: var(--indigo);"></span>Human-in-loop verification</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- bottom rail: data flow strip -->
+      <div style="margin-top: 36px; display:grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 16px; align-items:center; padding: 22px 28px; background: #fff; border: 1px solid var(--rule); border-radius: 12px; box-shadow: var(--shadow-card);">
+        <div>
+          <div class="num" style="color: var(--muted);">SOURCES</div>
+          <div style="font-family: var(--display); font-weight: 700; font-size: 18px; color: var(--ink); margin-top: 4px; letter-spacing: -0.015em;">Open web · social · IRS · APIs</div>
+        </div>
+        <div style="font-family: var(--mono); color: var(--accent); font-size: 18px;">→</div>
+        <div>
+          <div class="num" style="color: var(--muted);">LLM LAYER</div>
+          <div style="font-family: var(--display); font-weight: 700; font-size: 18px; color: var(--ink); margin-top: 4px; letter-spacing: -0.015em;">Grounded extraction · dedup · sentiment</div>
+        </div>
+        <div style="font-family: var(--mono); color: var(--accent); font-size: 18px;">→</div>
+        <div>
+          <div class="num" style="color: var(--muted);">CATALOG</div>
+          <div style="font-family: var(--display); font-weight: 700; font-size: 18px; color: var(--ink); margin-top: 4px; letter-spacing: -0.015em;">Unified profile · Trust Index · matcher</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer"><div>Gates Foundation · RFP Response</div><div>08 / 18</div></div>
+  </section>
+
+  <!-- ============ 7. IMPACT PASSPORT HERO ============ -->
+  <section class="slide tinted" data-label="07 Impact Passport Hero">
+    <div class="chrome"><div class="mark"><span class="mark-dot"></span> Philanthropy OS</div><div>§ 05.1 &nbsp; Impact Passport</div></div>
+    <div class="pad" style="padding: 72px 100px 60px; gap: 0;">
+      <div style="margin-bottom: 32px;">
+        <p class="eyebrow" style="margin:0 0 8px;">Where giving goes</p>
+        <h2 class="title" style="font-size: 52px; margin:0;">Every donation streams live to the donor's Impact Passport.</h2>
+      </div>
+      <div style="flex:1; min-height:0;">
+        <div style="background:#fff; border-radius:16px; overflow:hidden; box-shadow: 0 12px 40px rgba(0,0,0,0.08); border: 1px solid #f0f4f8; display:flex; flex-direction:column; height:100%;">
+          <div style="padding: 12px 16px; background: linear-gradient(to right, #f8fafc, #f5f7fa); border-bottom: 1px solid #f0f4f8; font-size:12px; font-family:var(--sans); color:var(--ink-soft); display:flex; align-items:center; gap:8px; font-weight: 500;">
+            <span style="display:flex;gap:5px;"><span style="width:9px;height:9px;border-radius:50%;background:#fe6058;display:inline-block;"></span><span style="width:9px;height:9px;border-radius:50%;background:#fcc02e;display:inline-block;"></span><span style="width:9px;height:9px;border-radius:50%;background:#5fc038;display:inline-block;"></span></span>
+            <span>Donor's live portfolio view</span>
+          </div>
+          <img src="uploads/Uers Profile.png" alt="Impact Passport" style="width:100%; flex:1; object-fit:cover; object-position:top;" />
+        </div>
+      </div>
+    </div>
+    <div class="footer"><div>Gates Foundation · RFP Response</div><div>10 / 18</div></div>
+  </section>
+
+  <!-- ============ 7.1 IMPACT PASSPORT FEATURES ============ -->
+  <section class="slide" data-label="07.1 Passport Features">
+    <div class="chrome"><div class="mark"><span class="mark-dot"></span> Philanthropy OS</div><div>§ 05.1.1 &nbsp; Passport Capabilities</div></div>
+    <div class="pad" style="justify-content:center;">
+      <p class="eyebrow">Closing the feedback loop</p>
+      <h2 class="title" style="max-width: 1500px;">Real-time impact tracking + tax intelligence in one living document.</h2>
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 48px;">
+        <div style="display:flex; flex-direction:column; gap: 24px;">
+          <div style="background: rgba(0,212,168,0.08); border: 1px solid rgba(0,212,168,0.2); border-radius:14px; padding: 32px;">
+            <div style="font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px;">Real-time sync</div>
+            <h3 style="font-family: var(--serif); font-size: 32px; line-height: 1.15; color: var(--ink); margin: 0 0 12px;">Donation → Impact, live.</h3>
+            <p style="font-size: 16px; line-height: 1.6; color: var(--ink-soft); margin: 0;">The moment a nonprofit disburses funds or reports an outcome, it streams to the donor's portfolio. No lag. No waiting for annual reports.</p>
+            <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(0,212,168,0.15); font-size: 14px; color: var(--muted);">
+              <strong>Inside the Passport:</strong> Donation date · Disbursement date · Beneficiary location · Outcome metric · Real-time progress bar
+            </div>
+          </div>
+          <div style="background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.2); border-radius:14px; padding: 32px;">
+            <div style="font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #6366f1; margin-bottom: 12px;">Tax intelligence</div>
+            <h3 style="font-family: var(--serif); font-size: 32px; line-height: 1.15; color: var(--ink); margin: 0 0 12px;">Year in Giving, auto-compiled.</h3>
+            <p style="font-size: 16px; line-height: 1.6; color: var(--ink-soft); margin: 0;">All receipts, tax letters, impact statements, and donation records auto-bundle into a single, audit-ready PDF for tax filing.</p>
+            <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(99,102,241,0.15); font-size: 14px; color: var(--muted);">
+              <strong>One-click tax prep:</strong> Donation receipts · Bunching summaries · DAF statements · Legacy gift documentation
+            </div>
+          </div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap: 24px;">
+          <div style="background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.2); border-radius:14px; padding: 32px;">
+            <div style="font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #b45309; margin-bottom: 12px;">Giving timeline</div>
+            <h3 style="font-family: var(--serif); font-size: 32px; line-height: 1.15; color: var(--ink); margin: 0 0 12px;">A donor's complete story.</h3>
+            <p style="font-size: 16px; line-height: 1.6; color: var(--ink-soft); margin: 0;">Chronological view of every donation, matched to disbursements and outcomes. Share it with family, advisors, or the public to show total impact.</p>
+            <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(245,158,11,0.15); font-size: 14px; color: var(--muted);">
+              <strong>Shareable insights:</strong> Impact summary · Giving intensity · Cause alignment · Geographic reach
+            </div>
+          </div>
+          <div style="background: rgba(244,63,94,0.08); border: 1px solid rgba(244,63,94,0.2); border-radius:14px; padding: 32px;">
+            <div style="font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #dc2626; margin-bottom: 12px;">Agent intelligence</div>
+            <h3 style="font-family: var(--serif); font-size: 32px; line-height: 1.15; color: var(--ink); margin: 0 0 12px;">Agentic recommendations.</h3>
+            <p style="font-size: 16px; line-height: 1.6; color: var(--ink-soft); margin: 0;">AI surfaces the next most-aligned giving opportunity based on past donations, impact preferences, and current crises.</p>
+            <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(244,63,94,0.15); font-size: 14px; color: var(--muted);">
+              <strong>AI-powered next steps:</strong> Top 3 matched nonprofits · Crisis auto-alerts · Bunching opportunities
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer"><div>Gates Foundation · RFP Response</div><div>11 / 18</div></div>
+  </section>
+
+  <!-- ============ 8. NONPROFIT INTELLIGENCE ============ -->
+  <section class="slide tinted" data-label="08 Nonprofit Intelligence">
+    <div class="chrome"><div class="mark"><span class="mark-dot"></span> Philanthropy OS</div><div>§ 05.2 &nbsp; Nonprofit Intelligence</div></div>
+    <div class="pad" style="padding: 72px 100px 60px; gap: 0;">
+      <div style="margin-bottom: 40px;">
+        <p class="eyebrow" style="margin:0 0 8px;">For nonprofit partners</p>
+        <h2 class="title" style="font-size: 52px; margin:0;">The Donor Directory: who gave, what moved them, what's next.</h2>
+      </div>
+      <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 32px; align-items:stretch;">
+        <div style="background:#fff; border-radius:16px; overflow:hidden; box-shadow: 0 12px 40px rgba(0,0,0,0.08); border: 1px solid #f0f4f8; display:flex; flex-direction:column;">
+          <div style="padding: 12px 16px; background: linear-gradient(to right, #f8fafc, #f5f7fa); border-bottom: 1px solid #f0f4f8; font-size:12px; font-family:var(--sans); color:var(--ink-soft); display:flex; align-items:center; gap:8px; font-weight: 500;">
+            <span style="display:flex;gap:5px;"><span style="width:9px;height:9px;border-radius:50%;background:#fe6058;display:inline-block;"></span><span style="width:9px;height:9px;border-radius:50%;background:#fcc02e;display:inline-block;"></span><span style="width:9px;height:9px;border-radius:50%;background:#5fc038;display:inline-block;"></span></span>
+            <span>Nonprofit CRM view</span>
+          </div>
+          <img src="uploads/Donor Tracking.png" alt="Donor Tracking" style="width:100%; flex:1; object-fit:cover; object-position:top;" />
+        </div>
+        <div style="display:flex; flex-direction:column; gap:18px; justify-content:flex-start;">
+          <div style="background: rgba(0,212,168,0.08); border: 1px solid rgba(0,212,168,0.2); border-radius:12px; padding: 24px;">
+            <div style="font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px;">Unified history</div>
+            <h3 style="font-family: var(--serif); font-size: 24px; line-height: 1.2; color: var(--ink); margin: 0 0 8px;">Every donor in one place.</h3>
+            <p style="font-size: 15px; line-height: 1.55; color: var(--ink-soft); margin: 0;">Cross-matched across Philanthropy OS. No duplicate records. Enriched with giving patterns and intent signals.</p>
+          </div>
+          <div style="background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.2); border-radius:12px; padding: 24px;">
+            <div style="font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #6366f1; margin-bottom: 8px;">Segmentation</div>
+            <h3 style="font-family: var(--serif); font-size: 24px; line-height: 1.2; color: var(--ink); margin: 0 0 8px;">Find the right prospect.</h3>
+            <p style="font-size: 15px; line-height: 1.55; color: var(--ink-soft); margin: 0;">Filter by giving capacity, cause alignment, engagement stage, and impact preference.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer"><div>Gates Foundation · RFP Response</div><div>12 / 18</div></div>
+  </section>
+
+  <!-- ============ 9. TRUST INDEX ============ -->
+  <section class="slide" data-label="09 Trust Index">
+    <div class="chrome"><div class="mark"><span class="mark-dot"></span> Philanthropy OS</div><div>§ 06 &nbsp; Trust Index</div></div>
+    <div class="pad" style="justify-content:center;">
+      <p class="eyebrow">Verification layer</p>
+      <h2 class="title" style="max-width: 1500px;">Not one rating. <em>Five sources</em> — including AI-synthesized public sentiment — composited into one score.</h2>
+      <div style="display:grid; grid-template-columns: 560px 1fr; gap: 80px; margin-top: 32px; align-items:center;">
+        <div style="position:relative; width: 520px; height: 520px; margin: auto;">
+          <svg viewBox="0 0 520 520" width="520" height="520">
+            <circle cx="260" cy="260" r="180" fill="none" stroke="#e2e8f0" stroke-width="64"/>
+            <!-- 30% Charity Navigator -->
+            <circle cx="260" cy="260" r="180" fill="none" stroke="#059669" stroke-width="64"
+                    stroke-dasharray="339.3 1130.9" transform="rotate(-90 260 260)"/>
+            <!-- 25% IRS / ProPublica -->
+            <circle cx="260" cy="260" r="180" fill="none" stroke="#0f172a" stroke-width="64"
+                    stroke-dasharray="282.7 1130.9" stroke-dashoffset="-339.3" transform="rotate(-90 260 260)"/>
+            <!-- 20% Candid -->
+            <circle cx="260" cy="260" r="180" fill="none" stroke="#6366f1" stroke-width="64"
+                    stroke-dasharray="226.2 1130.9" stroke-dashoffset="-622.0" transform="rotate(-90 260 260)"/>
+            <!-- 15% Public Sentiment AI -->
+            <circle cx="260" cy="260" r="180" fill="none" stroke="#e11d48" stroke-width="64"
+                    stroke-dasharray="169.6 1130.9" stroke-dashoffset="-848.2" transform="rotate(-90 260 260)"/>
+            <!-- 10% GreatNonprofits -->
+            <circle cx="260" cy="260" r="180" fill="none" stroke="#f59e0b" stroke-width="64"
+                    stroke-dasharray="113.1 1130.9" stroke-dashoffset="-1017.8" transform="rotate(-90 260 260)"/>
+          </svg>
+          <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+            <div class="num" style="color: var(--muted);">EXAMPLE · MALALA FUND</div>
+            <div style="font-family: var(--sans); font-weight: 800; font-size: 140px; line-height:1; letter-spacing:-0.05em; color: var(--ink); margin-top: 4px;">92</div>
+            <div class="num" style="margin-top:8px; color: var(--accent);">TRUST INDEX / 100</div>
+          </div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap: 10px;">
+          <div class="ti-source" style="border-left: 3px solid #059669;">
+            <div style="display:flex; justify-content:space-between; align-items:baseline;"><h6>Charity Navigator</h6><span class="wt">30%</span></div>
+            <p>Accountability ratings, CN Alerts, 225k+ orgs. GraphQL API.</p>
+          </div>
+          <div class="ti-source" style="border-left: 3px solid #0f172a;">
+            <div style="display:flex; justify-content:space-between; align-items:baseline;"><h6>IRS Form 990 / ProPublica</h6><span class="wt">25%</span></div>
+            <p>Financial health, executive pay, program-to-overhead ratios.</p>
+          </div>
+          <div class="ti-source" style="border-left: 3px solid #6366f1;">
+            <div style="display:flex; justify-content:space-between; align-items:baseline;"><h6>Candid / GuideStar</h6><span class="wt">20%</span></div>
+            <p>Profile completeness, IRS compliance, grant history.</p>
+          </div>
+          <div class="ti-source" style="border-left: 3px solid #e11d48;">
+            <div style="display:flex; justify-content:space-between; align-items:baseline;"><h6>AI Public Sentiment <span style="font-family: var(--mono); font-size: 9px; color: var(--danger); letter-spacing: 0.18em; padding: 2px 6px; background: rgba(225,29,72,0.10); border-radius: 4px; margin-left: 6px; vertical-align: 2px;">NEW</span></h6><span class="wt">15%</span></div>
+            <p>LLM-synthesized opinion from Reddit, X.com, forums &amp; reviews — themes, controversies, and recurring praise.</p>
+          </div>
+          <div class="ti-source" style="border-left: 3px solid #f59e0b;">
+            <div style="display:flex; justify-content:space-between; align-items:baseline;"><h6>GreatNonprofits</h6><span class="wt">10%</span></div>
+            <p>Verified donor and volunteer community reviews.</p>
+          </div>
+          <div style="margin-top:4px; font-size: 13px; color: var(--muted); line-height: 1.55;">Enrichment: GiveWell Top Charity badges, GlobalGiving (175 countries), IRS TEOS eligibility, VolunteerMatch.</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer"><div>Gates Foundation · RFP Response</div><div>11 / 18</div></div>
+  </section>
+
+  <!-- ============ 8. CRISIS PULSE ============ -->
+  <section class="slide" data-label="10 Crisis Pulse">
+    <div class="chrome"><div class="mark"><span class="mark-dot"></span> Philanthropy OS</div><div>§ 07 &nbsp; Crisis Pulse Engine</div></div>
+    <div class="pad" style="justify-content:center;">
+      <div style="display:grid; grid-template-columns: 0.9fr 1.3fr; gap: 48px; align-items:stretch;">
+        <div style="display:flex; flex-direction:column; justify-content:center;">
+          <p class="eyebrow">Real-time response</p>
+          <h2 class="title">From breaking news to <em>vetted action</em> — in minutes, not days.</h2>
+          <p class="lede">Multi-source feeds are ingested, normalized into Crisis Events, and matched against nonprofits by operational geography and cause area. Donors with aligned values are notified; Crisis Responder Mode auto-allocates budget. Multi-source validation prevents false alarms.</p>
+          <div style="margin-top:32px; display:flex; gap:8px; flex-wrap:wrap;">
+            <span class="chip">USGS</span>
+            <span class="chip">GDACS</span>
+            <span class="chip">ACLED</span>
+            <span class="chip">UNHCR</span>
+            <span class="chip">WHO</span>
+            <span class="chip">ReliefWeb</span>
+            <span class="chip">FEMA</span>
+            <span class="chip">GDELT</span>
+          </div>
+        </div>
+        <div style="border-radius:16px; overflow:hidden; box-shadow: 0 12px 40px rgba(0,0,0,0.08); border: 1px solid #f0f4f8; display:flex; flex-direction:column; flex:1; min-height:0;">
+          <img src="uploads/Crisis Pulse.png" alt="Crisis Pulse" style="width:100%; height:100%; object-fit:cover; object-position:top center;" />
+        </div>
+      </div>
+    </div>
+    <div class="footer"><div>Gates Foundation · RFP Response</div><div>12 / 18</div></div>
+  </section>
+
+  <!-- ============ 9. CRISIS DATA SOURCES ============ -->
+  <section class="slide" data-label="11 Pulse Data">
+    <div class="chrome"><div class="mark"><span class="mark-dot"></span> Philanthropy OS</div><div>§ 07.1 &nbsp; Pulse Data Topology</div></div>
+    <div class="pad" style="justify-content:center;">
+      <p class="eyebrow">No single source of truth — we composite.</p>
+      <h2 class="title" style="max-width: 1400px;">Nine validated feeds. Every event <em>cross-checked before it ships.</em></h2>
+      <div style="display:grid; grid-template-columns: 1.5fr 1fr; gap: 56px; margin-top: 36px;">
+        <div class="src-table">
+          <div class="h">Crisis Type</div><div class="h">Primary Source</div><div class="h">Backup</div>
+          <div class="c">Earthquakes</div><div class="c mono">USGS API</div><div class="c muted">GDACS</div>
+          <div class="c">Floods / Cyclones / Volcanoes</div><div class="c mono">GDACS</div><div class="c muted">ReliefWeb</div>
+          <div class="c">Armed conflict</div><div class="c mono">ACLED</div><div class="c muted">ReliefWeb</div>
+          <div class="c">Refugee / Displacement</div><div class="c mono">UNHCR</div><div class="c muted">HDX HAPI</div>
+          <div class="c">Disease outbreaks</div><div class="c mono">WHO</div><div class="c muted">ReliefWeb</div>
+          <div class="c">Humanitarian situations</div><div class="c mono">UN OCHA / ReliefWeb</div><div class="c muted">HDX HAPI</div>
+          <div class="c">US federal disasters</div><div class="c mono">OpenFEMA</div><div class="c muted">GDACS</div>
+          <div class="c">Emerging / early-warning</div><div class="c mono">GDELT (152 langs)</div><div class="c muted">NewsAPI.ai</div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap: 14px;">
+          <div class="card">
+            <div class="num">RULE 01</div>
+            <h3 class="sub" style="font-size: 24px; margin: 8px 0 6px;">Two-source validation</h3>
+            <p style="color: var(--muted); font-size:14px; line-height:1.55; margin:0;">No alert fires until the event is confirmed by ≥2 independent feeds.</p>
+          </div>
+          <div class="card">
+            <div class="num">RULE 02</div>
+            <h3 class="sub" style="font-size: 24px; margin: 8px 0 6px;">Dignity-first framing</h3>
+            <p style="color: var(--muted); font-size:14px; line-height:1.55; margin:0;">Surface responder capacity and impact — never suffering imagery.</p>
+          </div>
+          <div class="card">
+            <div class="num">RULE 03</div>
+            <h3 class="sub" style="font-size: 24px; margin: 8px 0 6px;">Human review on contested events</h3>
+            <p style="color: var(--muted); font-size:14px; line-height:1.55; margin:0;">Genocide / ethnic violence uses ACLED taxonomy with editorial review.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer"><div>Gates Foundation · RFP Response</div><div>13 / 18</div></div>
+  </section>
+
+  <!-- ============ 10. B2B PIPELINE ============ -->
+  <section class="slide" data-label="12 Nonprofit Pipeline">
+    <div class="chrome"><div class="mark"><span class="mark-dot"></span> Philanthropy OS</div><div>§ 08 &nbsp; The B2B Layer</div></div>
+    <div class="pad" style="justify-content:center;">
+      <p class="eyebrow">What nonprofits plug in</p>
+      <h2 class="title" style="max-width: 1500px;">A two-way data pipeline that makes every partner org <em>smarter over time.</em></h2>
+      <div class="grid-3" style="margin-top: 36px;">
+        <div class="card">
+          <div class="num">01 · ENRICH</div>
+          <h3 class="sub" style="font-size: 28px; margin: 12px 0 10px;">Private donor &amp; project data, in.</h3>
+          <p style="color: var(--muted); font-size:15px; line-height:1.55; margin:0;">Secure APIs let nonprofits ingest their own donor history and project milestones — feeding the matcher with richer signal. Data syncing with CRMs. </p>
+        </div>
+        <div class="card">
+          <div class="num">02 · PREDICT</div>
+          <h3 class="sub" style="font-size: 28px; margin: 12px 0 10px;">The right project, shown first.</h3>
+          <p style="color: var(--muted); font-size:15px; line-height:1.55; margin:0;">AI surfaces the specific project most likely to resonate with a visiting donor based on their Passport profile.</p>
+        </div>
+        <div class="card">
+          <div class="num">03 · CLOSE</div>
+          <h3 class="sub" style="font-size: 28px; margin: 12px 0 10px;">Impact → donor, in a loop.</h3>
+          <p style="color: var(--muted); font-size:15px; line-height:1.55; margin:0;">Project outcomes auto-publish to each donor's Impact Story and Year in Giving — closing the feedback loop.</p>
+        </div>
+      </div>
+
+      <div style="margin-top: 48px; display:grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 18px;">
+        <div class="card tight">
+          <div class="num">TAX</div>
+          <div style="margin-top: 10px; font-family: var(--sans); font-weight: 600; font-size: 19px; line-height:1.25; letter-spacing: -0.01em;">Bunching strategies &amp; auto-receipts.</div>
+        </div>
+        <div class="card tight">
+          <div class="num">ROUNDUP</div>
+          <div style="margin-top: 10px; font-family: var(--sans); font-weight: 600; font-size: 19px; line-height:1.25; letter-spacing: -0.01em;">Plaid spare-change micro-giving, pooled by the agent.</div>
+        </div>
+        <div class="card tight">
+          <div class="num">MATCH</div>
+          <div style="margin-top: 10px; font-family: var(--sans); font-weight: 600; font-size: 19px; line-height:1.25; letter-spacing: -0.01em;">Unclaimed employer matches, surfaced automatically.</div>
+        </div>
+        <div class="card tight">
+          <div class="num">LEGACY</div>
+          <div style="margin-top: 10px; font-family: var(--sans); font-weight: 600; font-size: 19px; line-height:1.25; letter-spacing: -0.01em;">DAFs, trusts, bequest giving — for the $30T transfer.</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer"><div>Gates Foundation · RFP Response</div><div>14 / 18</div></div>
+  </section>
+
+  <!-- ============ 11. COMPETITIVE ============ -->
+  <section class="slide" data-label="13 What Changes">
+    <div class="chrome"><div class="mark"><span class="mark-dot"></span> Philanthropy OS</div><div>§ 09 &nbsp; What Changes</div></div>
+    <div class="pad" style="justify-content:center;">
+      <p class="eyebrow">Against the current state</p>
+      <h2 class="title" style="max-width: 1500px;">Every layer of the giving experience, <em>redrawn.</em></h2>
+      <table class="comp" style="margin-top: 36px;">
+        <thead>
+          <tr><th style="width: 22%;">Dimension</th><th style="width: 36%;">Traditional giving</th><th style="width: 42%;">Philanthropy OS</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="feat">Discovery</td><td class="old">Manual search across dozens of sites</td><td class="new">AI profiling agent learns donor intent live</td></tr>
+          <tr><td class="feat">Trust</td><td class="old">One static rating, often out of date</td><td class="new">5-source Trust Index incl. AI public-sentiment synthesis</td></tr>
+          <tr><td class="feat">Catalog coverage</td><td class="old">Only orgs that bother to enroll</td><td class="new">LLM agents profile every charity, even non-enrolled, grounded in web search</td></tr>
+          <tr><td class="feat">Friction</td><td class="old">Sign up, re-enter, verify on every site</td><td class="new">One Passport, embedded on any donation page</td></tr>
+          <tr><td class="feat">Crisis response</td><td class="old">Reactive, self-directed, 72-hour lag</td><td class="new">Real-time Pulse, auto-matched to vetted responders</td></tr>
+          <tr><td class="feat">Monthly giving</td><td class="old">Set-and-forget recurring donation</td><td class="new">Autonomous monthly agent rebalances by signal &amp; urgency</td></tr>
+          <tr><td class="feat">Planning</td><td class="old">Hire a planner or DIY at year-end</td><td class="new">Ad-hoc AI copilot for legacy, DAF, bunching, capital gains</td></tr>
+          <tr><td class="feat">Employer matching</td><td class="old">Manual, often forgotten — $7B left unclaimed</td><td class="new">Auto-surfaced at point of giving</td></tr>
+          <tr><td class="feat">Tax efficiency</td><td class="old">Hand rolled at year-end</td><td class="new">AI bunching strategies + auto IRS receipts</td></tr>
+          <tr style="border-bottom:0;"><td class="feat">Global reach</td><td class="old">Largely US-centric</td><td class="new">175+ countries via GlobalGiving integration</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="footer"><div>Gates Foundation · RFP Response</div><div>15 / 18</div></div>
+  </section>
+
+  <!-- ============ 12. ROADMAP ============ -->
+  <section class="slide" data-label="14 Roadmap">
+    <div class="chrome"><div class="mark"><span class="mark-dot"></span> Philanthropy OS</div><div>§ 10 &nbsp; Development Roadmap</div></div>
+    <div class="pad" style="justify-content:flex-start; padding-top: 140px;">
+      <p class="eyebrow">Five phases · ~15 months to full platform</p>
+      <h2 class="title" style="max-width: 1400px;">Ship the <em>MVP in 90 days</em>, then compound.</h2>
+      <div class="rail">
+        <div class="steps">
+          <div class="step active">
+            <div class="bullet"></div>
+            <div class="phase">Phase 01 · Q1</div>
+            <h6>MVP + Profiling Agent</h6>
+            <p>990 parser, ProPublica / Charity Navigator APIs, and the donor profiling agent that learns intent live as donors explore.</p>
+          </div>
+          <div class="step">
+            <div class="bullet"></div>
+            <div class="phase">Phase 02 · Q2</div>
+            <h6>LLM Charity Ingestion + User Testing</h6>
+            <p>Web-grounded LLM pipeline profiles non-enrolled charities; campaign extraction with citation provenance. User experience testing, MVP refinement, and PMF assessment.</p>
+          </div>
+          <div class="step">
+            <div class="bullet"></div>
+            <div class="phase">Phase 03 · Q3</div>
+            <h6>Sentiment + Crowd Campaigns + Obat Onboarding</h6>
+            <p>Reddit / X.com sentiment synthesis into Trust Index; AI scout for crowd-sourced fundraisers. OBAT Health integration begins with weekly feedback on Passport & Agentic features.</p>
+          </div>
+          <div class="step">
+            <div class="bullet"></div>
+            <div class="phase">Phase 04 · Q4</div>
+            <h6>Onboarding 3+ Non-Profits</h6>
+            <p>Recruit and onboard 3 additional nonprofits beyond OBAT. Open nonprofit API for project & impact data sync; validate the B2B partnership model.</p>
+          </div>
+          <div class="step">
+            <div class="bullet"></div>
+            <div class="phase">Phase 05 · Q5</div>
+            <h6>Scale to 20 Non-Profits</h6>
+            <p>Expand to 20 global health and development orgs. Monthly Giving Agent, Crisis Responder mode, and ad-hoc planning copilot (DAF / legacy / bunching) go live.</p>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 80px; padding: 22px 26px; background: rgba(5,150,105,0.06); border: 1px solid rgba(5,150,105,0.25); border-radius: 14px; display:flex; gap: 36px; align-items:center;">
+        <div style="flex-shrink:0;"><div class="num">VALIDATION PARTNER</div><div style="font-family: var(--display); font-weight: 800; font-size: 26px; color:var(--ink); margin-top:6px; letter-spacing: -0.025em;">OBAT Health</div></div>
+        <div style="color: var(--ink-2); font-size: 15px; line-height:1.55;">OBAT commits to integrating the platform on launch, recruiting 3 additional charities within 6 months, and providing weekly feedback on the Passport &amp; Agentic features — validating the sector-scale model before broader rollout.</div>
+      </div>
+    </div>
+    <div class="footer"><div>Gates Foundation · RFP Response</div><div>16 / 18</div></div>
+  </section>
+
+  <!-- ============ 13. TEAM ============ -->
+  <section class="slide" data-label="15 Team">
+    <div class="chrome"><div class="mark"><span class="mark-dot"></span> Philanthropy OS</div><div>§ 11 &nbsp; The Team</div></div>
+    <div class="pad" style="justify-content:center;">
+      <p class="eyebrow">Who is behind this</p>
+      <h2 class="title" style="max-width: 1400px;">A tight team with a <em>validated launch partner</em> already committed.</h2>
+      <div class="team-grid">
+        <div class="person">
+          <div class="av"></div>
+          <div class="ro">Technical Lead</div>
+          <div class="nm">Tashfeen Ekram, MD</div>
+          <div class="bio">Co-founder &amp; former CMO of Luma Health (SF-based patient engagement platform serving 700+ health systems). Practicing diagnostic radiologist; co-owner. MD, University of Michigan Medical School. Owns the architecture — Impact Passport, Agentic Engine, and the technical grant spec.</div>
+        </div>
+        <div class="person">
+          <div class="av two"></div>
+          <div class="ro">Strategic Advisor &amp; Co-builder</div>
+          <div class="nm">Jawaid Ekram</div>
+          <div class="bio">25+ yrs in large-scale systems. Ex-GM at Microsoft (Global Foundation Services, Live Meeting), ex-SVP Engineering &amp; Ops at Visa International, co-founder of Uhuru Software. Board member, The Citizens Foundation (TCF-USA); founded the Seattle Chapter (30+ schools). OBAT advisory board. MS Computer Science, IIT.</div>
+        </div>
+        <div class="person">
+          <div class="av three"></div>
+          <div class="ro">Applicant &amp; Fiscal Sponsor</div>
+          <div class="nm">Anwar Khan — OBAT Helpers</div>
+          <div class="bio">Founder &amp; President of OBAT Helpers (501(c)(3), est. 2004) — serves Urdu-speaking and Rohingya communities across Bangladesh through 50+ education programs and microfinance. Retired GM Lead Auditor of Quality Management Systems (19 yrs); CEO, Global Excellence Consulting; National Baldrige Examiner. NED Karachi, MBA Indiana Wesleyan.</div>
+        </div>
+      </div>
+      <div style="margin-top: 64px; display:grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 24px; padding-top: 32px; border-top: 1px solid var(--rule);">
+        <div><div class="num" style="color: var(--muted);">GOVERNANCE</div><div style="color: var(--ink-2); font-size: 16px; margin-top:8px; line-height:1.45;">MOU signed — IP owned by developers, perpetual license to OBAT.</div></div>
+        <div><div class="num" style="color: var(--muted);">DATA</div><div style="color: var(--ink-2); font-size: 16px; margin-top:8px; line-height:1.45;">GDPR + ethical AI standards; industry-standard encryption.</div></div>
+        <div><div class="num" style="color: var(--muted);">GLOBAL ACCESS</div><div style="color: var(--ink-2); font-size: 16px; margin-top:8px; line-height:1.45;">Adherent to Gates Foundation's Global Access policy — public good by design.</div></div>
+        <div><div class="num" style="color: var(--muted);">NONPROFIT INTEGRITY</div><div style="color: var(--ink-2); font-size: 16px; margin-top:8px; line-height:1.45;">Fair-market value structuring, 501(c)(3) compliant, no private inurement.</div></div>
+      </div>
+    </div>
+    <div class="footer"><div>Gates Foundation · RFP Response</div><div>17 / 18</div></div>
+  </section>
+
+  <!-- ============ 14. THE ASK ============ -->
+  <section class="slide" data-label="16 The Ask">
+    <div class="chrome"><div class="mark"><span class="mark-dot"></span> Philanthropy OS</div><div>§ 12 &nbsp; The Ask</div></div>
+    <div class="pad" style="justify-content:center;">
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items:center;">
+        <div>
+          <p class="eyebrow">What we're requesting</p>
+          <h2 class="title" style="font-size: 92px;">Fund the <em>operating system</em> for global giving.</h2>
+          <p class="lede" style="margin-top: 20px;">A Gates Foundation grant unlocks the 18-month build: MVP, Widget Beta, Crisis Pulse, Agentic Layer, B2B scale, and the community + legacy tier. OBAT Helpers is already committed as fiscal sponsor, launch partner, and weekly feedback loop.</p>
+          <div style="margin-top: 40px; display:flex; gap: 12px; flex-wrap: wrap;">
+            <span class="chip accent">Validated partner: OBAT</span>
+            <span class="chip">$1K pre-committed by sponsor</span>
+            <span class="chip">Global Access compliant</span>
+            <span class="chip">MOU executed</span>
+          </div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap: 32px;">
+          <div>
+            <div class="ask-big">$95K</div>
+            <div class="ask-lbl">TECHNICAL DEVELOPMENT FEE · MILESTONE-GATED</div>
+          </div>
+          <div style="display:grid; grid-template-columns: 1fr; gap: 12px; font-size: 15px; border-top: 1px solid var(--rule); padding-top: 28px;">
+            <div style="display:flex; justify-content:space-between; color: var(--ink-2);"><span>Personnel Cost </span><strong style="font-family: var(--mono); color: var(--accent); font-weight: 600;">$72,000</strong></div>
+            <div style="display:flex; justify-content:space-between; color: var(--ink-2);"><span>Infrastructure Cost (hosting + LLM)</span><strong style="font-family: var(--mono); color: var(--accent); font-weight: 600;">$15,000</strong></div>
+            <div style="display:flex; justify-content:space-between; color: var(--ink-2);"><span>Hardware</span><strong style="font-family: var(--mono); color: var(--accent); font-weight: 600;">$8,000</strong></div>
+          </div>
+          <div style="margin-top: 8px; padding: 18px 22px; background: rgba(255,255,255,0.04); border: 1px solid var(--rule); border-radius: 12px; font-size: 14px; line-height: 1.55; color: var(--ink-2);">
+            <strong style="color:var(--ink);">Contingency:</strong> if the grant is not awarded, OBAT continues to operate the platform and covers ongoing infrastructure — the work ships either way.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer"><div>Gates Foundation · RFP Response</div><div>18 / 18 · Thank you</div></div>
+  </section>
+
+  <!-- ============ A1. APPENDIX — EXTENDED TEAM ============ -->
+  <section class="slide" data-label="A1 Extended Team">
+    <div class="chrome"><div class="mark"><span class="mark-dot"></span> Philanthropy OS</div><div>Appendix A &nbsp; · &nbsp; Extended Team</div></div>
+    <div class="pad" style="justify-content:center;">
+      <p class="eyebrow">Appendix · Additional team members</p>
+      <h2 class="title" style="max-width: 1500px;">Builders, operators, and field experts <em>already on the ground.</em></h2>
+      <p class="lede" style="max-width: 1400px; margin-bottom: 36px;">Beyond the core technical and strategic leadership, the build is supported by a junior development hire and two senior OBAT operators who own the program-side validation loop and on-the-ground feedback from Bangladesh.</p>
+      <div class="team-grid" style="margin-top: 24px;">
+        <div class="person">
+          <div class="av" style="background: linear-gradient(135deg, #6366f1, #312e81);"></div>
+          <div class="ro">Chief of Staff · OBAT Helpers</div>
+          <div class="nm">Catalina Cifuentes</div>
+          <div class="bio">Chief of Staff at OBAT Helpers since 2019, supporting both the US executive team and OBAT's implementation partners in Bangladesh to ensure programs execute with excellence. Holds a Bachelor's degree in Engineering from Universidad Rafael Landívar (Guatemala), a Certificate in Project Management from UC Irvine, and a Certificate in Muslim Philanthropy and Humanitarian Studies from Zakat Foundation Institute. Based in Guatemala, she provides critical operational support and coordinates program execution across borders.</div>
+        </div>
+        <div class="person">
+          <div class="av" style="background: linear-gradient(135deg, #059669, #047857);"></div>
+          <div class="ro">Executive Director · OBAT Helpers</div>
+          <div class="nm">Arishaa Khan, MPA</div>
+          <div class="bio">Executive Director of OBAT Helpers; longtime helper and volunteer with OBAT since 2004 with two field journeys to the camps in Bangladesh. Founding member of OBAT's Think Tank groups for camp youth empowerment, and former Special Events &amp; Projects Coordinator for IDP communities. MPA in Development Practice, Columbia University; prior roles at the World Food Programme, Islamic Development Bank, and Voice of America.</div>
+        </div>
+        <div class="person">
+          <div class="av" style="background: linear-gradient(135deg, #f59e0b, #b45309);"></div>
+          <div class="ro">Director of Operations · OBAT Helpers</div>
+          <div class="nm">Eracleo Vallejo</div>
+          <div class="bio">Director of Operations at OBAT Helpers — owns day-to-day program operations, vendor coordination, and field execution across OBAT's education, health, and humanitarian relief programs in Bangladesh. Provides the operational ground truth that validates the Impact Passport and Trust Index against how a real fielded nonprofit actually runs.</div>
+        </div>
+      </div>
+      <div style="margin-top: 56px; padding: 22px 26px; background: rgba(5,150,105,0.06); border: 1px solid rgba(5,150,105,0.25); border-radius: 14px; display:flex; gap: 36px; align-items:center;">
+        <div style="flex-shrink:0;"><div class="num">FIELD VALIDATION</div><div style="font-family: var(--display); font-weight: 800; font-size: 22px; color:var(--ink); margin-top:6px; letter-spacing: -0.025em;">Two ED-level OBAT operators in the loop</div></div>
+        <div style="color: var(--ink-2); font-size: 15px; line-height:1.55;">Arishaa and Eracleo provide weekly feedback on the Passport, Agentic Engine, and B2B integration — ensuring every surface we ship is grounded in how a real, multi-program 501(c)(3) actually receives and reports on philanthropic capital.</div>
+      </div>
+    </div>
+    <div class="footer"><div>Gates Foundation · RFP Response · Appendix</div><div>A1 / A2</div></div>
+  </section>
+
+  <!-- ============ A2. APPENDIX — DEMO SITE & CREDENTIALS ============ -->
+  <section class="slide" data-label="A2 Demo Site">
+    <div class="chrome"><div class="mark"><span class="mark-dot"></span> Philanthropy OS</div><div>Appendix B &nbsp; · &nbsp; Live Demo &amp; Credentials</div></div>
+    <div class="pad" style="justify-content:flex-start; padding-top: 90px; padding-bottom: 80px;">
+      <p class="eyebrow">Appendix · Try it yourself</p>
+      <h2 class="title" style="max-width: 1500px;">A live demo, with <em>seeded personas</em> for every donor archetype.</h2>
+      <p class="lede" style="max-width: 1400px; margin-bottom: 20px;">Two deployed testing environments — prototype website and charity website integration — ready for the RFP committee to explore directly. Demo accounts are pre-seeded with realistic giving history so the AI profiling agent and Trust Index render against real signal.</p>
+      <div style="padding: 16px 22px; background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.25); border-radius: 12px; margin-bottom: 24px;">
+        <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; color: #6366f1; font-weight: 700; margin-bottom: 7px;">FOR RFP COMMITTEE TESTING</div>
+        <p style="font-size: 14px; line-height: 1.55; color: var(--ink-2); margin: 0;">The links and credentials below are for committee members to test the product directly. Log in using any of the personas to explore the donor flow, charity dashboard, Impact Passport, and agentic surfaces hands-on.</p>
+      </div>
+
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 28px;">
+        <div class="card" style="padding: 0; overflow: hidden;">
+          <div style="padding: 14px 20px; background: var(--bg-2); border-bottom: 1px solid var(--rule); display:flex; align-items:center; gap: 12px;">
+            <span style="display:flex; gap:5px;"><span style="width:10px;height:10px;border-radius:50%;background:#f87171;"></span><span style="width:10px;height:10px;border-radius:50%;background:#fbbf24;"></span><span style="width:10px;height:10px;border-radius:50%;background:#34d399;"></span></span>
+            <span class="num" style="font-size: 10px;">PRODUCTION</span>
+            <span style="margin-left:auto; font-family: var(--mono); font-size: 12px; color: var(--accent);">https://philanthropy-os.onrender.com/</span>
+          </div>
+          <div style="padding: 24px 24px 22px;">
+            <h3 class="sub" style="font-size: 24px; margin: 0 0 6px;">Live platform</h3>
+            <p style="color: var(--muted); font-size: 14px; line-height: 1.55; margin: 0;">Public-facing donor + charity site. Sign-up flow, Impact Passport, Trust Index, and Crisis Pulse all live.</p>
+          </div>
+        </div>
+
+        <div class="card" style="padding: 0; overflow: hidden; border-color: rgba(5,150,105,0.30);">
+          <div style="padding: 14px 20px; background: rgba(5,150,105,0.08); border-bottom: 1px solid rgba(5,150,105,0.25); display:flex; align-items:center; gap: 12px;">
+            <span style="display:flex; gap:5px;"><span style="width:10px;height:10px;border-radius:50%;background:#f87171;"></span><span style="width:10px;height:10px;border-radius:50%;background:#fbbf24;"></span><span style="width:10px;height:10px;border-radius:50%;background:#34d399;"></span></span>
+            <span class="num" style="font-size: 10px;">DEMO SANDBOX · SEEDED</span>
+            <span style="margin-left:auto; font-family: var(--mono); font-size: 12px; color: var(--accent);">https://philanthropy-os-demo.onrender.com/</span>
+          </div>
+          <div style="padding: 24px 24px 22px;">
+            <h3 class="sub" style="font-size: 24px; margin: 0 0 6px;">Reviewer playground</h3>
+            <p style="color: var(--muted); font-size: 14px; line-height: 1.55; margin: 0;">Pre-seeded with one charity and four donor archetypes. Use the credentials below to explore each persona.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 28px; display:grid; grid-template-columns: 1fr 1fr; gap: 28px;">
+        <div>
+          <div class="num" style="margin-bottom: 14px;">Charity (NGO) account</div>
+          <div class="card" style="padding: 22px;">
+            <div style="display:flex; align-items:center; gap:12px; margin-bottom: 14px;">
+              <div style="width:40px; height:40px; border-radius: 10px; background: linear-gradient(135deg,#f59e0b,#b45309); flex-shrink:0;"></div>
+              <div>
+                <div style="font-family: var(--display); font-weight: 700; font-size: 19px; letter-spacing:-0.015em; color: var(--ink);">Demo Charity — OBAT Health</div>
+                <div style="font-size: 12px; color: var(--muted); margin-top: 2px;">Charity dashboard · projects · donor CRM · Impact Passport host</div>
+              </div>
+            </div>
+            <div style="display:grid; grid-template-columns: max-content 1fr; gap: 8px 18px; font-family: var(--mono); font-size: 13px;">
+              <span style="color: var(--muted); letter-spacing: 0.12em; font-size: 10px; align-self:center; text-transform: uppercase;">Email</span>
+              <span style="color: var(--ink); user-select: all;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ed828f8c99c089888082ad9d8584818c8399859f829d94c0829ec389888082">[email&#160;protected]</a></span>
+              <span style="color: var(--muted); letter-spacing: 0.12em; font-size: 10px; align-self:center; text-transform: uppercase;">Password</span>
+              <span style="color: var(--accent); user-select: all;">ObatDemo2024!</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="num" style="margin-bottom: 14px;">Donor accounts <span style="color: var(--muted); margin-left: 8px; font-weight: 500;">— shared password <span style="color:var(--accent);">DonorDemo2024!</span></span></div>
+          <div class="card" style="padding: 18px 22px;">
+            <div style="display:grid; grid-template-columns: max-content 1fr; gap: 10px 16px; font-size: 13px; align-items:center;">
+              <span class="chip accent" style="font-size: 9px; padding: 3px 8px; justify-self:start;">MAJOR</span>
+              <span style="font-family: var(--mono); color: var(--ink); user-select: all;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0763626a682a6a666d687547776f6e6b6669736f7568777e2a68742963626a68">[email&#160;protected]</a></span>
+
+              <span class="chip" style="background: rgba(99,102,241,0.10); border-color: rgba(99,102,241,0.32); color:#4338ca; font-size: 9px; padding: 3px 8px; justify-self:start;">RECURRING</span>
+              <span style="font-family: var(--mono); color: var(--ink); user-select: all;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e58180888ac89780869097978c8b82a5958d8c89848b918d978a959cc88a96cb8180888a">[email&#160;protected]</a></span>
+
+              <span class="chip" style="background: rgba(245,158,11,0.10); border-color: rgba(245,158,11,0.32); color:#b45309; font-size: 9px; padding: 3px 8px; justify-self:start;">NEW</span>
+              <span style="font-family: var(--mono); color: var(--ink); user-select: all;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1c787971733172796b5c6c7475707d7268746e736c6531736f3278797173">[email&#160;protected]</a></span>
+
+              <span class="chip danger" style="font-size: 9px; padding: 3px 8px; justify-self:start;">LAPSED</span>
+              <span style="font-family: var(--mono); color: var(--ink); user-select: all;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5632333b397b3a372625333216263e3f3a3738223e2439262f7b39257832333b39">[email&#160;protected]</a></span>
+            </div>
+            <div style="margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--rule-soft); font-size: 12px; color: var(--muted); line-height: 1.55;">Each persona has a different giving history, interest profile, and Trust Index sensitivity — so the profiling agent's recommendations diverge meaningfully across accounts.</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 24px; padding: 16px 20px; background: var(--bg-2); border: 1px solid var(--rule); border-radius: 12px; display:flex; gap: 24px; align-items:center; font-size: 13px; color: var(--ink-2); line-height: 1.5;">
+        <span class="num" style="color: var(--muted); flex-shrink:0; font-size: 9px;">SUGGESTED FLOW</span>
+        <span>Sign in as <strong>demo-major</strong> → review Giving Plan → toggle <strong>Crisis Responder</strong> mode → switch to OBAT charity account.</span>
+      </div>
+    </div>
+    <div class="footer"><div>Gates Foundation · RFP Response · Appendix</div><div>A2 / A2</div></div>
+  </section>
+
+</deck-stage>
+
+<!-- ============ TWEAKS ============ -->
+<div id="tweaks">
+  <h4>Tweaks</h4>
+  <div class="row">
+    <label>Accent color</label>
+    <div class="swatches" data-tweak="accent">
+      <div class="sw" data-val="#059669" style="background:#059669"></div>
+      <div class="sw" data-val="#10b981" style="background:#10b981"></div>
+      <div class="sw" data-val="#0f172a" style="background:#0f172a"></div>
+      <div class="sw" data-val="#6366f1" style="background:#6366f1"></div>
+      <div class="sw" data-val="#f59e0b" style="background:#f59e0b"></div>
+      <div class="sw" data-val="#e11d48" style="background:#e11d48"></div>
+    </div>
+  </div>
+  <div class="row">
+    <label>Background tone</label>
+    <div class="seg" data-tweak="bg">
+      <button data-val="#ffffff">White</button>
+      <button data-val="#f8fafc">Slate</button>
+    </div>
+  </div>
+  <div class="row">
+    <label>Density</label>
+    <div class="seg" data-tweak="density">
+      <button data-val="dense">Dense</button>
+      <button data-val="airy">Airy</button>
+    </div>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+(() => {
+  const DEFAULTS = /*EDITMODE-BEGIN*/{
+    "accent": "#059669",
+    "bg": "#ffffff",
+    "density": "dense"
+  }/*EDITMODE-END*/;
+
+  const state = Object.assign({}, DEFAULTS);
+  const panel = document.getElementById('tweaks');
+
+  function applyAll() {
+    const r = document.documentElement.style;
+    r.setProperty('--accent', state.accent);
+    r.setProperty('--bg', state.bg);
+    if (state.bg === '#f8fafc') {
+      r.setProperty('--bg-2', '#f1f5f9');
+    } else {
+      r.setProperty('--bg-2', '#f8fafc');
+    }
+    panel.querySelectorAll('[data-tweak]').forEach(group => {
+      const key = group.dataset.tweak;
+      group.querySelectorAll('[data-val]').forEach(el => {
+        if (el.dataset.val === String(state[key])) el.setAttribute('data-on',''); else el.removeAttribute('data-on');
+      });
+    });
+  }
+
+  function set(key, val) {
+    state[key] = val;
+    applyAll();
+    try {
+      window.parent.postMessage({type:'__edit_mode_set_keys', edits:{[key]: val}}, '*');
+    } catch(e) {}
+  }
+
+  panel.querySelectorAll('[data-tweak]').forEach(group => {
+    const key = group.dataset.tweak;
+    group.addEventListener('click', (e) => {
+      const el = e.target.closest('[data-val]');
+      if (!el) return;
+      set(key, el.dataset.val);
+    });
+  });
+
+  window.addEventListener('message', (e) => {
+    const d = e.data || {};
+    if (d.type === '__activate_edit_mode') panel.setAttribute('data-open','');
+    if (d.type === '__deactivate_edit_mode') panel.removeAttribute('data-open');
+  });
+  try { window.parent.postMessage({type:'__edit_mode_available'}, '*'); } catch(e) {}
+
+  applyAll();
+})();
+</script>
+
+<script>
+(async () => {
+  try { await customElements.whenDefined('deck-stage'); } catch (e) {}
+  try { await document.fonts.ready; } catch (e) {}
+  setTimeout(() => { try { window.print(); } catch (e) {} }, 500);
+})();
+</script>
+</body>
+</html>
