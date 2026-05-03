@@ -24,12 +24,18 @@ Legend: ✅ Complete · 🔄 In Progress · 🔲 Planned
 
 | Feature | Status |
 |---|---|
-| Charity Index / Transparency Layer (50+ curated nonprofits + IRS database) | ✅ Complete |
+| Charity Index / Transparency Layer (83 enriched charities + IRS database) | ✅ Complete |
 | Trust Index scores from IRS 990 data (efficiency, overhead, CEO pay) | ✅ Complete |
 | Filter by cause area (Climate, Education, Health, etc.) | ✅ Complete |
 | Curated vs global search toggle | ✅ Complete |
 | Platform Partner badge for onboarded NGOs | ✅ Complete |
 | Campaign Discovery — Gemini-powered live search for nonprofit initiatives | ✅ Complete |
+| Charity Data Enrichment — 83 real orgs with verified EINs, websites, standardized tags | ✅ Complete |
+| Live Campaigns — 113 real campaigns seeded across 80 directory orgs | ✅ Complete |
+| External donate flow for directory orgs (in-platform for registered partners) | ✅ Complete |
+| Lead Pipeline Dashboard — admin engagement ranking for unregistered org outreach | ✅ Complete |
+| Engagement tracking (views, clicks, favorites) on unregistered orgs | ✅ Complete |
+| Scheduled campaign refresh (Cloud Function, stale badges) | 🔲 Planned |
 | Charity Navigator API integration (225k+ orgs) | 🔲 Planned |
 | Candid / GuideStar API integration | 🔲 Planned |
 | GreatNonprofits community reviews layer | 🔲 Planned |
